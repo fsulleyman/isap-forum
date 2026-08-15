@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources Repository — Information Systems Academics and Practitioners Forum</title>
+  <meta name="description" content="Access whitepapers, webinar slide decks, policy briefs, and curated links from the Information Systems Academics and Practitioners Forum (ISAP Forum).">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-nav-wrapper">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo-link" aria-label="ISAP Forum Homepage">
+          <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="forum.html" class="nav-link">Forum</a></li>
+            <li><a href="resources.html" class="nav-link active" aria-current="page">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- CTA Actions -->
+        <div class="nav-actions">
+          <a href="forum.html" class="btn btn-primary btn-sm">
+            <span>Join the Forum</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="about.html" class="mobile-nav-link">About</a></li>
+        <li><a href="forum.html" class="mobile-nav-link">Forum</a></li>
+        <li><a href="resources.html" class="mobile-nav-link active">Resources</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <a href="forum.html" class="btn btn-primary style-block" style="width: 100%;">Join the Forum</a>
+    </div>
+  </header>
+
+
+
+
+
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    
+    <!-- Page Header (Solid Navy) -->
+    <section class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <div class="page-header-content">
+          <div class="eyebrow-tag" style="background: rgba(255,255,255,0.15); color: #FFF; border-color: rgba(255,255,255,0.3);">
+            Repository &amp; Knowledge Base
+          </div>
+          <h1 id="page-title" class="page-header-title">
+            Resources Repository
+          </h1>
+          <p class="page-header-lead">
+            Curated whitepapers, webinar slide decks, policy briefs, and academic-industry references for Information Systems professionals in Ghana and Africa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Repository Grid & Filter -->
+    <section class="section bg-offwhite">
+      <div class="container">
+        
+        <!-- Live Category Filter Buttons -->
+        <div class="resources-filter-bar" role="tablist" aria-label="Filter resources by category">
+          <button class="filter-btn js-resource-filter active" data-filter="all" role="tab" aria-selected="true">All Resources</button>
+          <button class="filter-btn js-resource-filter" data-filter="research" role="tab" aria-selected="false">Research</button>
+          <button class="filter-btn js-resource-filter" data-filter="industry" role="tab" aria-selected="false">Industry</button>
+          <button class="filter-btn js-resource-filter" data-filter="policy" role="tab" aria-selected="false">Policy</button>
+        </div>
+
+        <!-- Resources Cards Grid -->
+        <div class="resources-grid" id="resourcesGrid">
+          
+          <!-- Resource 1: Research Whitepaper -->
+          <article class="resource-card" data-category="research">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-whitepaper">Whitepaper</span>
+                <span class="resource-cat-tag">&bull; Research</span>
+              </div>
+              <h3 class="resource-title">
+                ISAP Prototype Research Brief: Information Systems Theory &amp; Digital Governance
+              </h3>
+              <p class="resource-desc">
+                An analytical overview demonstrating how academic IS models evaluate digital governance readiness across West African public sector institutions.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Resource</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample whitepaper download link.')">
+                Download PDF
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 2: Research Slides -->
+          <article class="resource-card" data-category="research">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-slides">Webinar Slides</span>
+                <span class="resource-cat-tag">&bull; Research</span>
+              </div>
+              <h3 class="resource-title">
+                Academic Workshop Deck: Qualitative IS Case Study Methodologies
+              </h3>
+              <p class="resource-desc">
+                Slide deck detailing case study design, data triangulation, and empirical research validation for IS graduate students and researchers.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Resource</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample presentation deck link.')">
+                View Slides
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 3: Research Link -->
+          <article class="resource-card" data-category="research">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-link">Useful Link</span>
+                <span class="resource-cat-tag">&bull; Research</span>
+              </div>
+              <h3 class="resource-title">
+                Directory of Open Access Information Systems Academic Journals
+              </h3>
+              <p class="resource-desc">
+                Curated reference index of peer-reviewed Information Systems journals, preprint servers, and open research databases.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Curated Directory</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a sample directory link for research journals.')">
+                Access Directory
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 4: Industry Whitepaper -->
+          <article class="resource-card" data-category="industry">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-whitepaper">Whitepaper</span>
+                <span class="resource-cat-tag">&bull; Industry</span>
+              </div>
+              <h3 class="resource-title">
+                ISAP Enterprise Post-Mortem Report: Cloud Migration Success Factors
+              </h3>
+              <p class="resource-desc">
+                Practical analysis of cloud adoption retrospectives, technical debt remediation, and cost optimization in African enterprise environments.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Resource</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample industry report link.')">
+                Download PDF
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 5: Industry Slides -->
+          <article class="resource-card" data-category="industry">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-slides">Webinar Slides</span>
+                <span class="resource-cat-tag">&bull; Industry</span>
+              </div>
+              <h3 class="resource-title">
+                Practitioner Deck: Enterprise Architecture &amp; Core Refactoring
+              </h3>
+              <p class="resource-desc">
+                Presentation slides covering modern enterprise architecture frameworks, API integration patterns, and legacy system modernization.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Resource</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample slide presentation link.')">
+                View Slides
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 6: Industry Link -->
+          <article class="resource-card" data-category="industry">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-link">Useful Link</span>
+                <span class="resource-cat-tag">&bull; Industry</span>
+              </div>
+              <h3 class="resource-title">
+                West Africa Enterprise IT Competency &amp; Skills Guide
+              </h3>
+              <p class="resource-desc">
+                Curated skills framework mapping academic IS competencies to emerging enterprise job roles (Systems Analyst, Data Architect, CIO).
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Curated Guide</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a sample link for the IT competency guide.')">
+                Access Guide
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 7: Policy Whitepaper -->
+          <article class="resource-card" data-category="policy">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-whitepaper">Policy Brief</span>
+                <span class="resource-cat-tag">&bull; Policy</span>
+              </div>
+              <h3 class="resource-title">
+                ISAP Policy Brief: AI Ethics &amp; Governance Recommendations
+              </h3>
+              <p class="resource-desc">
+                Policy brief detailing academic recommendations for ethical AI regulation, data privacy compliance, and public sector adoption guidelines in Ghana.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Policy Brief</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample policy brief link.')">
+                Download PDF
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 8: Policy Slides -->
+          <article class="resource-card" data-category="policy">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-slides">Webinar Slides</span>
+                <span class="resource-cat-tag">&bull; Policy</span>
+              </div>
+              <h3 class="resource-title">
+                Policy Forum Deck: Data Protection Compliance &amp; Security
+              </h3>
+              <p class="resource-desc">
+                Presentation slides from ISAP public forum on regulatory alignment with Ghana Data Protection Commission (DPC) and Cybersecurity Authority (CSA).
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Sample Presentation</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a prototype sample policy slide deck link.')">
+                View Slides
+              </button>
+            </div>
+          </article>
+
+          <!-- Resource 9: Policy Link -->
+          <article class="resource-card" data-category="policy">
+            <div>
+              <div class="resource-top-meta">
+                <span class="resource-type-badge type-link">Useful Link</span>
+                <span class="resource-cat-tag">&bull; Policy</span>
+              </div>
+              <h3 class="resource-title">
+                Ghana National Information Technology Policy &amp; Regulation Index
+              </h3>
+              <p class="resource-desc">
+                Directory linking to official legislative frameworks, NITA standards, NCA guidelines, and Data Protection Act resources.
+              </p>
+            </div>
+            <div class="resource-footer">
+              <span class="demo-tag">Official Index</span>
+              <button type="button" class="btn btn-outline btn-sm" onclick="alert('This is a sample directory link for national IT policy frameworks.')">
+                Access Index
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Footer Branding & Info -->
+        <div class="footer-brand">
+          <div class="footer-logo-container">
+            <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="footer-logo-img">
+          </div>
+          <p class="footer-description">
+            Information Systems Academics and Practitioners Forum (ISAP Forum) is a Ghana-based academic-industry community dedicated to bridging theory, practice, and national policy across Africa.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h2 class="footer-heading">Quick Links</h2>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About ISAP</a></li>
+            <li><a href="forum.html" class="footer-link">Public Forum</a></li>
+            <li><a href="resources.html" class="footer-link">Resources Repository</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Key Stakeholders -->
+        <div>
+          <h2 class="footer-heading">Stakeholders</h2>
+          <ul class="footer-links">
+            <li><a href="about.html#academics" class="footer-link">Academics &amp; Researchers</a></li>
+            <li><a href="about.html#practitioners" class="footer-link">IT Practitioners &amp; CIOs</a></li>
+            <li><a href="about.html#policy" class="footer-link">Policy Stakeholders</a></li>
+            <li><a href="about.html#students" class="footer-link">IS &amp; CS Students</a></li>
+            <li><a href="about.html#organizations" class="footer-link">Industry Organizations</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Location Info -->
+        <div>
+          <h2 class="footer-heading">Community Focus</h2>
+          <ul class="footer-info-list">
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Accra, Ghana &bull; Africa Region</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Public Fora, Media &amp; Publications</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10z"/></svg>
+              <span>Open Discussion Platform</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Information Systems Academics and Practitioners Forum (ISAP Forum). All rights reserved.
+        </div>
+        <div class="footer-bottom-links">
+          <span>Ghana &amp; Africa</span>
+          <span>&bull;</span>
+          <span>IS Theory &amp; Practice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

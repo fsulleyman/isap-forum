@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Information Systems Academics and Practitioners Forum (ISAP Forum) — Ghana &amp; Africa</title>
+  <meta name="description" content="ISAP Forum connects Information Systems academics, researchers, students, industry practitioners, and policy stakeholders in Ghana and Africa to bridge theory, practice, and national policy.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-nav-wrapper">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo-link" aria-label="ISAP Forum Homepage">
+          <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="forum.html" class="nav-link">Forum</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- CTA Actions -->
+        <div class="nav-actions">
+          <a href="forum.html" class="btn btn-primary btn-sm">
+            <span>Join the Forum</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+        <li><a href="about.html" class="mobile-nav-link">About</a></li>
+        <li><a href="forum.html" class="mobile-nav-link">Forum</a></li>
+        <li><a href="resources.html" class="mobile-nav-link">Resources</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <a href="forum.html" class="btn btn-primary style-block" style="width: 100%;">Join the Forum</a>
+    </div>
+  </header>
+
+
+  <!-- Sliding Image Strip Promotional Banner (No Text, Images Only) -->
+  <div class="isap-promo-carousel" id="isapPromoCarousel" role="region" aria-label="ISAP Photo Showcase">
+    <div class="promo-carousel-viewport" id="promoCarouselViewport">
+      <div class="promo-carousel-track" id="promoCarouselTrack">
+        <!-- Slides populated dynamically by JS module -->
+      </div>
+      <!-- Dots Navigation (Dots only, no text labels) -->
+      <div class="promo-carousel-dots" id="promoCarouselDots" role="tablist" aria-label="Slide indicators"></div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="eyebrow-tag">
+              <span class="eyebrow-dot"></span>
+              INDEPENDENT ACADEMIC-INDUSTRY PLATFORM
+            </div>
+            
+            <h1 id="hero-title" class="hero-title">
+              Connecting Information Systems theory, practice and policy in Ghana and Africa.
+            </h1>
+            
+            <p class="hero-lead">
+              ISAP Forum provides a dynamic, collaborative, and inclusive platform where academics, researchers, students, industry professionals, and consultants connect, share knowledge, debate emerging trends, and shape national technology policy.
+            </p>
+            
+            <div class="hero-actions">
+              <a href="forum.html" class="btn btn-primary">
+                <span>Explore the Forum</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a href="about.html" class="btn btn-outline">
+                <span>Learn More About ISAP</span>
+              </a>
+            </div>
+
+            <!-- Credibility Stat Bar -->
+            <div class="hero-stats-grid">
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">2026</span>
+                <span class="hero-stat-label">Founded</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">Academia + Industry</span>
+                <span class="hero-stat-label">Core Synergy</span>
+              </div>
+              <div class="hero-stat-item">
+                <span class="hero-stat-value">Ghana &amp; Africa</span>
+                <span class="hero-stat-label">Regional Focus</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image Container -->
+          <div class="hero-image-wrapper">
+            <div class="hero-image-card">
+              <img src="assets/hero-group-1.jpg" alt="ISAP Forum members and participants gathered in Ghana for academic-industry collaboration" class="hero-img">
+              <div class="hero-image-caption">
+                <div class="caption-title">ISAP Academic &amp; Practitioner Community</div>
+                <div class="caption-sub">Ghana &bull; Bridging Theory &amp; Industry Practice</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="section bg-offwhite" aria-labelledby="mission-vision-title">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="eyebrow-tag" style="background-color: var(--isap-gold-light); color: var(--isap-navy); border-color: var(--isap-gold-border);">
+            OUR FOUNDATION
+          </div>
+          <h2 id="mission-vision-title" class="section-title">Institutional Mission &amp; Vision</h2>
+          <p class="section-subtitle">Fostering synergistic partnerships to drive innovation and responsible technological adoption across Africa.</p>
+        </div>
+
+        <div class="grid grid-2 gap-lg">
+          
+          <!-- Mission Card -->
+          <div class="card card-mission">
+            <div class="card-tag">Official Mission Statement</div>
+            <h3 class="card-heading">Bridging Theory and Practice</h3>
+            <p class="card-text">
+              The mission of the ISAP Forum is to bridge the gap between theory and practice in the field of Information Systems. We provide a dynamic, collaborative, and inclusive platform where academics, researchers, students, industry professionals, and consultants can connect, share knowledge, debate emerging trends, shape national policy, and translate scholarly research into practical business value, and real-world challenges into impactful research agendas. We share knowledge and impact national policy through organisation of public fora, publications, and discussions on news media platforms.
+            </p>
+          </div>
+
+          <!-- Vision Card -->
+          <div class="card card-vision">
+            <div class="card-tag card-tag-gold">Official Vision Statement</div>
+            <h3 class="card-heading">Leading Interdisciplinary Community</h3>
+            <p class="card-text">
+              To be one of the leading interdisciplinary communities that shape the future of Information Systems in Ghana and Africa by fostering synergistic partnerships between academia and industry, ultimately driving innovation, responsible technological adoption, and a more digitally fluent society.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- What We Do Pillars Section -->
+    <section class="section" aria-labelledby="pillars-title">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="eyebrow-tag">CORE INITIATIVES</div>
+          <h2 id="pillars-title" class="section-title">What We Do</h2>
+          <p class="section-subtitle">How ISAP Forum creates practical business value and impactful research agendas.</p>
+        </div>
+
+        <div class="grid grid-4 gap-md">
+          
+          <!-- Pillar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            </div>
+            <h3 class="pillar-title">Knowledge Exchange</h3>
+            <p class="pillar-desc">Facilitating the sharing of research findings, case studies, and practical insights between academia and industry.</p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="pillar-title">Collaboration</h3>
+            <p class="pillar-desc">Stimulating joint research initiatives, mentorship programs, and industry-sponsored academic projects.</p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3 class="pillar-title">Career Development</h3>
+            <p class="pillar-desc">Connecting students and professionals with career opportunities, mentorship, and practical skill development.</p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="pillar-title">Policy &amp; Critical Debate</h3>
+            <p class="pillar-desc">Providing a credible platform to debate AI ethics, cybersecurity governance, and digital transformation policies.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Public Forum Preview Section -->
+    <section class="section bg-offwhite" aria-labelledby="forum-preview-title">
+      <div class="container">
+        
+        <div class="forum-preview-callout">
+          <div class="callout-header">
+            <div>
+              <div class="eyebrow-tag" style="background-color: rgba(255,255,255,0.15); color: #FFF; border-color: rgba(255,255,255,0.3);">
+                OPEN ACCESS DISCUSSION PLATFORM
+              </div>
+              <h2 id="forum-preview-title" style="font-size: 2rem; color: #FFF; margin-bottom: 0.5rem;">
+                Explore the ISAP Public Forum
+              </h2>
+              <p style="color: #CBD5E1; max-width: 680px; margin: 0;">
+                No account required to browse. All discussion threads are open for reading to promote transparent knowledge sharing across Ghana and Africa.
+              </p>
+            </div>
+            <div>
+              <a href="forum.html" class="btn btn-primary">
+                <span>Browse All Categories</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Grid Preview -->
+        <div class="grid grid-2 gap-md" style="margin-top: 2rem;">
+          
+          <div class="category-preview-card">
+            <div class="cat-preview-icon">01</div>
+            <div>
+              <h3 class="cat-preview-title">Research Corner</h3>
+              <p class="cat-preview-desc">Academic publications, preprints, research methodology debates, and Calls for Papers (CFP).</p>
+              <a href="forum.html" class="cat-link">View Discussions &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-preview-card">
+            <div class="cat-preview-icon">02</div>
+            <div>
+              <h3 class="cat-preview-title">Industry Practice</h3>
+              <p class="cat-preview-desc">Enterprise case studies, post-mortems, legacy refactoring, IT tools, and job postings.</p>
+              <a href="forum.html" class="cat-link">View Discussions &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-preview-card">
+            <div class="cat-preview-icon">03</div>
+            <div>
+              <h3 class="cat-preview-title">Hot Topics &amp; Policy Debate</h3>
+              <p class="cat-preview-desc">AI Ethics &amp; Governance, Cybersecurity in the Enterprise, and Digital Transformation strategy.</p>
+              <a href="forum.html" class="cat-link">View Discussions &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-preview-card">
+            <div class="cat-preview-icon">04</div>
+            <div>
+              <h3 class="cat-preview-title">Collaboration Hub</h3>
+              <p class="cat-preview-desc">Research participant requests, joint grant opportunities, mentorship, and guest lecture offers.</p>
+              <a href="forum.html" class="cat-link">View Discussions &rarr;</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Latest Discussions Snippets -->
+    <section class="section" aria-labelledby="discussions-title">
+      <div class="container">
+        
+        <div class="section-header-flex">
+          <div>
+            <div class="eyebrow-tag">COMMUNITY PARTICIPATION</div>
+            <h2 id="discussions-title" class="section-title">Latest Forum Topics</h2>
+          </div>
+          <a href="forum.html" class="btn btn-outline btn-sm">View All Threads</a>
+        </div>
+
+        <div class="grid grid-3 gap-md">
+          
+          <!-- Discussion Card 1 -->
+          <article class="discussion-card">
+            <div class="discussion-meta">
+              <span class="topic-category">Hot Topics &amp; Debate</span>
+              <span class="topic-replies">14 Replies</span>
+            </div>
+            <h3 class="discussion-title">
+              <a href="forum.html">AI Ethics &amp; Responsible Governance Frameworks in Ghanaian Financial Institutions</a>
+            </h3>
+            <p class="discussion-excerpt">
+              Exploring regulatory alignment with Data Protection Commission (DPC) standards for automated credit scoring models...
+            </p>
+            <div class="discussion-footer">
+              <span class="author-tag">Dr. E. Appiah (Academic)</span>
+              <span class="demo-tag">Prototype Data</span>
+            </div>
+          </article>
+
+          <!-- Discussion Card 2 -->
+          <article class="discussion-card">
+            <div class="discussion-meta">
+              <span class="topic-category">Research Corner</span>
+              <span class="topic-replies">8 Replies</span>
+            </div>
+            <h3 class="discussion-title">
+              <a href="forum.html">Call for Submissions: Case Study Methodologies in West African Enterprise Systems</a>
+            </h3>
+            <p class="discussion-excerpt">
+              Seeking qualitative IS case studies examining post-implementation challenges of ERP adoption in public sector agencies...
+            </p>
+            <div class="discussion-footer">
+              <span class="author-tag">Prof. K. Mensah (Researcher)</span>
+              <span class="demo-tag">Prototype Data</span>
+            </div>
+          </article>
+
+          <!-- Discussion Card 3 -->
+          <article class="discussion-card">
+            <div class="discussion-meta">
+              <span class="topic-category">Industry Practice</span>
+              <span class="topic-replies">21 Replies</span>
+            </div>
+            <h3 class="discussion-title">
+              <a href="forum.html">Public Sector Cloud Migration: Architectural Lessons &amp; Data Residency Constraints</a>
+            </h3>
+            <p class="discussion-excerpt">
+              Enterprise architects discuss hybrid cloud options aligning with NITA technical guidelines and security protocols...
+            </p>
+            <div class="discussion-footer">
+              <span class="author-tag">S. Addo (IT Practitioner)</span>
+              <span class="demo-tag">Prototype Data</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Announcements Callout Section -->
+    <section class="section bg-offwhite">
+      <div class="container">
+        
+        <div class="announcement-banner">
+          <div class="announcement-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div class="announcement-content">
+            <h3 class="announcement-heading">Upcoming ISAP Public Fora &amp; Media Engagements</h3>
+            <p class="announcement-text">
+              ISAP Forum regularly hosts public fora, publishes academic policy briefs, and participates in news media discussions across Ghana. Join our public discussion boards to get notified of upcoming public events.
+            </p>
+          </div>
+          <div class="announcement-action">
+            <a href="forum.html" class="btn btn-navy">Get Involved</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Footer Branding & Info -->
+        <div class="footer-brand">
+          <div class="footer-logo-container">
+            <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="footer-logo-img">
+          </div>
+          <p class="footer-description">
+            Information Systems Academics and Practitioners Forum (ISAP Forum) is a Ghana-based academic-industry community dedicated to bridging theory, practice, and national policy across Africa.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h2 class="footer-heading">Quick Links</h2>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About ISAP</a></li>
+            <li><a href="forum.html" class="footer-link">Public Forum</a></li>
+            <li><a href="resources.html" class="footer-link">Resources Repository</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Key Stakeholders -->
+        <div>
+          <h2 class="footer-heading">Stakeholders</h2>
+          <ul class="footer-links">
+            <li><a href="about.html#academics" class="footer-link">Academics &amp; Researchers</a></li>
+            <li><a href="about.html#practitioners" class="footer-link">IT Practitioners &amp; CIOs</a></li>
+            <li><a href="about.html#policy" class="footer-link">Policy Stakeholders</a></li>
+            <li><a href="about.html#students" class="footer-link">IS &amp; CS Students</a></li>
+            <li><a href="about.html#organizations" class="footer-link">Industry Organizations</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Location Info -->
+        <div>
+          <h2 class="footer-heading">Community Focus</h2>
+          <ul class="footer-info-list">
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Accra, Ghana &bull; Africa Region</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Public Fora, Media &amp; Publications</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Open Discussion Platform</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Information Systems Academics and Practitioners Forum (ISAP Forum). All rights reserved.
+        </div>
+        <div class="footer-bottom-links">
+          <span>Ghana &amp; Africa</span>
+          <span>&bull;</span>
+          <span>IS Theory &amp; Practice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

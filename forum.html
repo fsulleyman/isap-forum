@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Forum — Information Systems Academics and Practitioners Forum</title>
+  <meta name="description" content="Explore open discussion categories, research preprints, industry post-mortems, and policy debates on the Information Systems Academics and Practitioners Forum (ISAP Forum).">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-nav-wrapper">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo-link" aria-label="ISAP Forum Homepage">
+          <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="forum.html" class="nav-link active" aria-current="page">Forum</a></li>
+            <li><a href="resources.html" class="nav-link">Resources</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- CTA Actions -->
+        <div class="nav-actions">
+          <button class="btn btn-primary btn-sm js-start-discussion-btn">
+            <span>Start a Discussion</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="about.html" class="mobile-nav-link">About</a></li>
+        <li><a href="forum.html" class="mobile-nav-link active">Forum</a></li>
+        <li><a href="resources.html" class="mobile-nav-link">Resources</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <button class="btn btn-primary style-block js-start-discussion-btn" style="width: 100%;">Start a Discussion</button>
+    </div>
+  </header>
+
+
+
+
+
+
+  <!-- Main Content Area -->
+  <main id="main-content">
+    
+    <!-- Page Header (Solid Navy) -->
+    <section class="page-header" aria-labelledby="page-title">
+      <div class="container">
+        <div class="page-header-content">
+          <div class="eyebrow-tag" style="background: rgba(255,255,255,0.15); color: #FFF; border-color: rgba(255,255,255,0.3);">
+            PUBLIC DISCUSSION BOARDS
+          </div>
+          <h1 id="page-title" class="page-header-title">
+            ISAP Forum Categories &amp; Discussions
+          </h1>
+          <p class="page-header-lead">
+            An open platform connecting university researchers, Information Systems practitioners, students, and policy stakeholders across Ghana and Africa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forum Content Area -->
+    <section class="section bg-offwhite">
+      <div class="container">
+        
+        <!-- Open Access Policy Banner Notice -->
+        <div class="forum-header-banner">
+          <div class="forum-header-banner-text">
+            <div class="forum-banner-icon">i</div>
+            <div>
+              <div class="forum-banner-title">Open Access Policy &mdash; No Account Required to Browse</div>
+              <div class="forum-banner-sub">Visitors can freely explore all discussion topics, subtopics, and research threads without logging in. To post a new topic, click "Start a Discussion".</div>
+            </div>
+          </div>
+          <button class="btn btn-navy btn-sm js-start-discussion-btn">
+            <span>Start a Discussion</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+        </div>
+
+        <!-- Live Real-Time Search Bar -->
+        <div class="forum-search-box">
+          <svg class="forum-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="forumSearchInput" class="forum-search-input" placeholder="Search forum categories, subtopics, or keywords (e.g. AI Ethics, Methodologies, CFP, Case Studies)...">
+        </div>
+
+        <!-- 6 Main Forum Category Boards -->
+        <div id="forumBoardsContainer">
+          
+          <!-- Board 1 -->
+          <article class="forum-board-card" id="board-welcome">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">01</span>
+                <h2 class="forum-board-title">Welcome &amp; Announcements</h2>
+              </div>
+              <span class="demo-tag">3 Subtopics</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Community rules, member introductions, official ISAP announcements, and public fora event notices.
+            </p>
+            <div class="subtopics-grid">
+              <div class="subtopic-item">
+                <div class="subtopic-name">Forum Guidelines &amp; Code of Conduct</div>
+                <div class="subtopic-desc">Community expectations for constructive academic &amp; professional dialogue.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Member Introductions</div>
+                <div class="subtopic-desc">Welcome new academics, practitioners, researchers, and students.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">ISAP Official Announcements</div>
+                <div class="subtopic-desc">Updates on public fora, media appearances, and policy engagements.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Board 2 -->
+          <article class="forum-board-card" id="board-research">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">02</span>
+                <h2 class="forum-board-title">Research Corner</h2>
+              </div>
+              <span class="demo-tag">3 Subtopics</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Academic research preprints, calls for papers, research methodology debates, and doctoral thesis topics.
+            </p>
+            <div class="subtopics-grid">
+              <div class="subtopic-item">
+                <div class="subtopic-name">Publications &amp; Preprints</div>
+                <div class="subtopic-desc">Share and discuss working papers, journal submissions, and conference proceedings.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Calls for Papers (CFP)</div>
+                <div class="subtopic-desc">Announcements for upcoming Information Systems journals and conferences in Africa.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Research Methodologies</div>
+                <div class="subtopic-desc">Qualitative case studies, design science, quantitative survey design, and data collection.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Board 3 -->
+          <article class="forum-board-card" id="board-industry">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">03</span>
+                <h2 class="forum-board-title">Industry Practice</h2>
+              </div>
+              <span class="demo-tag">3 Subtopics</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Enterprise case studies, post-mortems, legacy refactoring, enterprise tools, and IS career advice.
+            </p>
+            <div class="subtopics-grid">
+              <div class="subtopic-item">
+                <div class="subtopic-name">Case Studies &amp; Post-Mortems</div>
+                <div class="subtopic-desc">Real-world retrospectives on ERP implementations, cloud migrations, and digital projects.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Tools &amp; Technologies</div>
+                <div class="subtopic-desc">Enterprise software, database architectures, analytics engines, and DevOps tools.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Career Advice &amp; Job Postings</div>
+                <div class="subtopic-desc">Career guidance for IS/CS graduates and IT professional vacancies.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Board 4 -->
+          <article class="forum-board-card" id="board-topics">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">04</span>
+                <h2 class="forum-board-title">Hot Topics &amp; Policy Debate</h2>
+              </div>
+              <span class="demo-tag">3 Subtopics</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Debating AI ethics, cybersecurity governance, digital transformation strategies, and national IT policy.
+            </p>
+            <div class="subtopics-grid">
+              <div class="subtopic-item">
+                <div class="subtopic-name">AI Ethics &amp; Governance</div>
+                <div class="subtopic-desc">Responsible AI adoption, bias mitigation, and ethical regulatory frameworks in Ghana.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Digital Transformation Strategies</div>
+                <div class="subtopic-desc">Public sector e-governance, fintech adoption, and national digital economy policy.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Cybersecurity &amp; Data Privacy</div>
+                <div class="subtopic-desc">Alignment with Data Protection Commission (DPC) and Cybersecurity Authority (CSA) rules.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Board 5 -->
+          <article class="forum-board-card" id="board-collaboration">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">05</span>
+                <h2 class="forum-board-title">Collaboration Hub</h2>
+              </div>
+              <span class="demo-tag">2 Subtopics</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Connecting academic researchers with industry partners, research participants, and student mentees.
+            </p>
+            <div class="subtopics-grid">
+              <div class="subtopic-item">
+                <div class="subtopic-name">Research Participant Requests</div>
+                <div class="subtopic-desc">Connect with industry practitioners for interview data, survey responses, and field studies.</div>
+              </div>
+              <div class="subtopic-item">
+                <div class="subtopic-name">Mentorship Requests &amp; Offers</div>
+                <div class="subtopic-desc">Pairing experienced IS leaders with students, young scholars, and early practitioners.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Board 6 -->
+          <article class="forum-board-card" id="board-resources">
+            <div class="forum-board-header">
+              <div class="forum-board-title-group">
+                <span class="board-num-badge">06</span>
+                <h2 class="forum-board-title">Resources Repository</h2>
+              </div>
+              <span class="demo-tag">Link &bull; Resources Page</span>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1rem;">
+              Access downloadable whitepapers, webinar slide decks, policy briefs, and curated directory links.
+            </p>
+            <div style="margin-top: 1rem;">
+              <a href="resources.html" class="btn btn-outline btn-sm">Explore Resources Repository &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive "Start a Discussion" Modal Popup Overlay -->
+  <div class="modal-overlay" id="startDiscussionModal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modal-title">Start a Discussion on ISAP Forum</h3>
+        <button class="modal-close-btn js-modal-close" aria-label="Close modal window">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-body); margin-bottom: 1.5rem;">
+          ISAP Forum is an open platform. Visitors can freely read all discussion threads without logging in. To submit a new topic or post to a board, please enter your discussion proposal below:
+        </p>
+        
+        <form id="startDiscussionForm" onsubmit="event.preventDefault(); alert('Thank you! Your discussion topic proposal has been received as part of the prototype preview.'); document.getElementById('startDiscussionModal').classList.remove('is-active'); document.body.style.overflow='';">
+          <div class="form-group">
+            <label class="form-label" for="modalAuthorName">Your Full Name *</label>
+            <input type="text" id="modalAuthorName" class="form-control" placeholder="e.g. Dr. Kwame Mensah / Sarah Addo" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modalCategory">Forum Board Category *</label>
+            <select id="modalCategory" class="form-control" required>
+              <option value="">-- Select Forum Board --</option>
+              <option value="welcome">01. Welcome &amp; Announcements</option>
+              <option value="research">02. Research Corner</option>
+              <option value="industry">03. Industry Practice</option>
+              <option value="topics">04. Hot Topics &amp; Policy Debate</option>
+              <option value="collaboration">05. Collaboration Hub</option>
+              <option value="resources">06. Resources Repository</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modalTopicTitle">Proposed Discussion Title *</label>
+            <input type="text" id="modalTopicTitle" class="form-control" placeholder="e.g. Challenges in Enterprise ERP Adoption in Ghana" required>
+          </div>
+
+          <div class="modal-footer" style="padding: 1rem 0 0 0;">
+            <button type="button" class="btn btn-outline js-modal-close">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit Discussion Topic</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Footer Branding & Info -->
+        <div class="footer-brand">
+          <div class="footer-logo-container">
+            <img src="assets/isap-logo.png" alt="ISAP Forum Logo" class="footer-logo-img">
+          </div>
+          <p class="footer-description">
+            Information Systems Academics and Practitioners Forum (ISAP Forum) is a Ghana-based academic-industry community dedicated to bridging theory, practice, and national policy across Africa.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h2 class="footer-heading">Quick Links</h2>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="about.html" class="footer-link">About ISAP</a></li>
+            <li><a href="forum.html" class="footer-link">Public Forum</a></li>
+            <li><a href="resources.html" class="footer-link">Resources Repository</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Key Stakeholders -->
+        <div>
+          <h2 class="footer-heading">Stakeholders</h2>
+          <ul class="footer-links">
+            <li><a href="about.html#academics" class="footer-link">Academics &amp; Researchers</a></li>
+            <li><a href="about.html#practitioners" class="footer-link">IT Practitioners &amp; CIOs</a></li>
+            <li><a href="about.html#policy" class="footer-link">Policy Stakeholders</a></li>
+            <li><a href="about.html#students" class="footer-link">IS &amp; CS Students</a></li>
+            <li><a href="about.html#organizations" class="footer-link">Industry Organizations</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Location Info -->
+        <div>
+          <h2 class="footer-heading">Community Focus</h2>
+          <ul class="footer-info-list">
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Accra, Ghana &bull; Africa Region</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Public Fora, Media &amp; Publications</span>
+            </li>
+            <li class="footer-info-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Open Discussion Platform</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Information Systems Academics and Practitioners Forum (ISAP Forum). All rights reserved.
+        </div>
+        <div class="footer-bottom-links">
+          <span>Ghana &amp; Africa</span>
+          <span>&bull;</span>
+          <span>IS Theory &amp; Practice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
