@@ -2,10 +2,12 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import SpeakerCard from '@/components/cards/SpeakerCard.astro';
-import { getPublishedSpeakers, getEventFacts } from '@/lib/sanity/client';
+import { getPublishedSpeakers, getEventFacts, lastQuerySources } from '@/lib/sanity/client';
 
 const speakers = await getPublishedSpeakers();
 const eventFacts = await getEventFacts();
+const dataSource = lastQuerySources['publishedSpeakers'] === 'live' ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
+console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length} published speaker(s) at ${new Date().toISOString()}`);
 ---
 
 <Layout
@@ -20,7 +22,18 @@ const eventFacts = await getEventFacts();
   />
 
   <section class="py-16 md:py-24 bg-isap-off-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
+      
+      <!-- Dev-only Data Source Verification Badge -->
+      {import.meta.env.DEV && (
+        <div class="p-3 bg-emerald-50 border border-emerald-300 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs text-emerald-900 font-mono shadow-sm" data-testid="data-source-badge">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Data Source: <strong class="text-emerald-950 font-bold">{dataSource}</strong></span>
+          </div>
+          <span class="text-emerald-700">Records: {speakers.length} Published | Rendered: {new Date().toLocaleTimeString()}</span>
+        </div>
+      )}
       
       <!-- Introduction Banner -->
       <div class="p-6 sm:p-8 rounded-2xl bg-white border border-isap-border/70 shadow-sm space-y-3">

@@ -213,7 +213,7 @@ export const fallbackRegisterPage: RegisterPageContent = {
   registrationDisclaimer: 'Please ensure your registration details are accurate. Official confirmation badges and parking passes will be issued to registered delegates prior to the forum.',
 };
 
-// Seed speakers: Prof. Attafuah is strictly Invited / Confirmed (NEVER Published)
+// Seed speakers: Prof. Attafuah is strictly Invited (NEVER Published). Zero fabricated published speakers.
 export const fallbackAllSpeakers: Speaker[] = [
   {
     _id: 'speaker-attafuah',
@@ -224,39 +224,6 @@ export const fallbackAllSpeakers: Speaker[] = [
     role: 'Keynote Speaker (25-min slot)',
     bio: 'Renowned criminologist and legal scholar who spearheaded the nationwide rollout of the Ghana Card identity management infrastructure.',
     status: 'Invited', // NEVER Published - demonstrates strict query-layer status gating
-  },
-  {
-    _id: 'speaker-pub-1',
-    _type: 'speaker',
-    name: 'Dr. Michael Mensah',
-    title: 'Head of IT Studies & Research Fellow',
-    organisation: 'University of Professional Studies, Accra (UPSA)',
-    role: 'Session Chair & Academic Lead',
-    bio: 'Lead researcher in Information Systems Governance, socio-technical systems design, and digital public infrastructure assessment.',
-    status: 'Published',
-    linkedin: 'https://www.linkedin.com/in/isap-forum',
-  },
-  {
-    _id: 'speaker-pub-2',
-    _type: 'speaker',
-    name: 'Ing. Nana Ama Poku',
-    title: 'Chief Technology Architect',
-    organisation: 'FinTech Ecosystem Consortium',
-    role: 'Panelist: Interoperability & Financial Inclusion',
-    bio: 'Specialist in digital financial switch architecture, biometric e-KYC compliance, and distributed enterprise integration.',
-    status: 'Published',
-    linkedin: 'https://www.linkedin.com/in/isap-forum',
-  },
-  {
-    _id: 'speaker-pub-3',
-    _type: 'speaker',
-    name: 'Kwame Baah-Nyarko',
-    title: 'Director of Cybersecurity & Digital Forensics',
-    organisation: 'National Cyber Security Agency',
-    role: 'Panelist: Infrastructure Resilience',
-    bio: 'Expert in national critical information infrastructure protection, cryptographic standards, and biometric identity fraud mitigation.',
-    status: 'Published',
-    linkedin: 'https://www.linkedin.com/in/isap-forum',
   },
 ];
 

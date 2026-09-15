@@ -53,11 +53,20 @@ export const sanityClient = createClient({
 
 const isDev = (typeof import.meta !== 'undefined' && Boolean(import.meta.env?.DEV)) || process.env.NODE_ENV === 'development';
 
+export const lastQuerySources: Record<string, 'live' | 'fallback'> = {};
+
 // Safe fetch helper: uses fallbacks in development only; fails loudly in production builds
 async function safeFetch<T>(query: string, params: Record<string, any> = {}, fallback: T, queryName = 'unknown'): Promise<T> {
   try {
     const data = await sanityClient.fetch<T>(query, params);
-    if (data && (Array.isArray(data) ? data.length > 0 : Object.keys(data).length > 0)) {
+    // If an array was returned by Sanity (including [] if 0 records exist), that is a valid live result!
+    if (Array.isArray(data)) {
+      lastQuerySources[queryName] = 'live';
+      return data;
+    }
+    // If a singleton document was returned
+    if (data !== null && data !== undefined && Object.keys(data).length > 0) {
+      lastQuerySources[queryName] = 'live';
       return data;
     }
     if (!isDev) {
@@ -69,6 +78,7 @@ async function safeFetch<T>(query: string, params: Record<string, any> = {}, fal
     }
     console.warn(`[DEV WARNING] Using fallback for "${queryName}": ${error.message}`);
   }
+  lastQuerySources[queryName] = 'fallback';
   return fallback;
 }
 
