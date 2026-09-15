@@ -2,9 +2,12 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import ResourceCard from '@/components/cards/ResourceCard.astro';
-import { getApprovedResources } from '@/lib/sanity/client';
+import { getApprovedResources, lastQuerySources } from '@/lib/sanity/client';
 
 const resources = await getApprovedResources();
+const isLive = lastQuerySources['approvedResources'] === 'live';
+const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
+console.log(`[/resources render] Source: ${dataSource} | Found: ${resources.length} approved resource(s) at ${new Date().toISOString()}`);
 
 const beforeEventResources = resources.filter((r) => r.category === 'Before Event');
 const afterEventResources = resources.filter((r) => r.category === 'After Event');
@@ -22,7 +25,18 @@ const afterEventResources = resources.filter((r) => r.category === 'After Event'
   />
 
   <section class="py-16 md:py-24 bg-isap-off-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-12">
+      
+      <!-- Dev-only Data Source Verification Badge -->
+      {import.meta.env.DEV && (
+        <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
+          <div class="flex items-center gap-2">
+            <span class={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></span>
+            <span>Data Source: <strong class="font-bold">{dataSource}</strong></span>
+          </div>
+          <span>Records: {resources.length} Approved | Rendered: {new Date().toLocaleTimeString()}</span>
+        </div>
+      )}
       
       <!-- Before Event Resources -->
       <div class="space-y-6">

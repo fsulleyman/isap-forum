@@ -2,9 +2,12 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import PartnerCard from '@/components/cards/PartnerCard.astro';
-import { getApprovedInstitutions } from '@/lib/sanity/client';
+import { getApprovedInstitutions, lastQuerySources } from '@/lib/sanity/client';
 
 const institutions = await getApprovedInstitutions();
+const isLive = lastQuerySources['approvedInstitutions'] === 'live';
+const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
+console.log(`[/partners render] Source: ${dataSource} | Found: ${institutions.length} approved institution(s) at ${new Date().toISOString()}`);
 
 // Strict categorization: Never interchange or mix categories
 const sponsors = institutions.filter((i) => i.category === 'Sponsor');
@@ -25,7 +28,18 @@ const participating = institutions.filter((i) => i.category === 'Participating')
   />
 
   <section class="py-16 md:py-24 bg-isap-off-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12">
+      
+      <!-- Dev-only Data Source Verification Badge -->
+      {import.meta.env.DEV && (
+        <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
+          <div class="flex items-center gap-2">
+            <span class={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></span>
+            <span>Data Source: <strong class="font-bold">{dataSource}</strong></span>
+          </div>
+          <span>Records: {institutions.length} Approved | Rendered: {new Date().toLocaleTimeString()}</span>
+        </div>
+      )}
       
       <!-- Academic & Institutional Partners -->
       <div class="space-y-6">

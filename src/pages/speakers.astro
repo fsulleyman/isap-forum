@@ -6,7 +6,8 @@ import { getPublishedSpeakers, getEventFacts, lastQuerySources } from '@/lib/san
 
 const speakers = await getPublishedSpeakers();
 const eventFacts = await getEventFacts();
-const dataSource = lastQuerySources['publishedSpeakers'] === 'live' ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
+const isLive = lastQuerySources['publishedSpeakers'] === 'live';
+const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
 console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length} published speaker(s) at ${new Date().toISOString()}`);
 ---
 
@@ -26,12 +27,12 @@ console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length
       
       <!-- Dev-only Data Source Verification Badge -->
       {import.meta.env.DEV && (
-        <div class="p-3 bg-emerald-50 border border-emerald-300 rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs text-emerald-900 font-mono shadow-sm" data-testid="data-source-badge">
+        <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
           <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Data Source: <strong class="text-emerald-950 font-bold">{dataSource}</strong></span>
+            <span class={`w-2.5 h-2.5 rounded-full ${isLive ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></span>
+            <span>Data Source: <strong class="font-bold">{dataSource}</strong></span>
           </div>
-          <span class="text-emerald-700">Records: {speakers.length} Published | Rendered: {new Date().toLocaleTimeString()}</span>
+          <span>Records: {speakers.length} Published | Rendered: {new Date().toLocaleTimeString()}</span>
         </div>
       )}
       
