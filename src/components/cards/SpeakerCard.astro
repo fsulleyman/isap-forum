@@ -1,11 +1,19 @@
 ---
 import type { Speaker } from '@/types/sanity';
+import { urlFor } from '@/lib/sanity/image';
 
 interface Props {
   speaker: Speaker;
 }
 
 const { speaker } = Astro.props;
+
+// Wire urlFor builder to generate optimized, CDN-backed image URLs with hotspot/crop support
+const photoBuilder = speaker.photo ? urlFor(speaker.photo) : null;
+const resolvedPhotoUrl = photoBuilder
+  ? photoBuilder.width(800).height(800).fit('crop').auto('format').url()
+  : speaker.photoUrl || null;
+
 const initials = speaker.name
   .split(' ')
   .filter((_, i, arr) => i === 0 || i === arr.length - 1)
@@ -17,9 +25,9 @@ const initials = speaker.name
   <div>
     <!-- Speaker Portrait / Avatar Header -->
     <div class="relative h-48 sm:h-52 bg-gradient-to-br from-isap-navy-dark to-isap-navy flex items-center justify-center overflow-hidden">
-      {speaker.photoUrl ? (
+      {resolvedPhotoUrl ? (
         <img
-          src={speaker.photoUrl}
+          src={resolvedPhotoUrl}
           alt={`Portrait of ${speaker.name}`}
           class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
           loading="lazy"

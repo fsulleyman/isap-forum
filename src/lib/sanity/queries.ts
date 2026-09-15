@@ -21,7 +21,17 @@ export const SPEAKERS_QUERY = `*[_type == "speaker" && status == "Published"] | 
   organisation,
   role,
   bio,
-  photo,
+  photo {
+    ...,
+    asset-> {
+      _id,
+      url,
+      metadata {
+        dimensions
+      }
+    }
+  },
+  "photoUrl": photo.asset->url,
   linkedin,
   status
 }`;
@@ -38,7 +48,14 @@ export const PROGRAMME_QUERY = `*[_type == "programme" && (status == "Confirmed"
     title,
     organisation,
     role,
-    photo,
+    photo {
+      ...,
+      asset-> {
+        _id,
+        url
+      }
+    },
+    "photoUrl": photo.asset->url,
     status
   },
   organisation,
@@ -50,7 +67,14 @@ export const INSTITUTIONS_QUERY = `*[_type == "institution" && approved == true]
   _id,
   _type,
   name,
-  logo,
+  logo {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "logoUrl": logo.asset->url,
   category,
   description,
   website,
@@ -62,7 +86,14 @@ export const NEWS_QUERY = `*[_type == "news" && status == "Published"] | order(p
   _type,
   title,
   slug,
-  featuredImage,
+  featuredImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "imageUrl": featuredImage.asset->url,
   publicationDate,
   summary,
   author,
@@ -74,7 +105,14 @@ export const NEWS_BY_SLUG_QUERY = `*[_type == "news" && slug.current == $slug &&
   _type,
   title,
   slug,
-  featuredImage,
+  featuredImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "imageUrl": featuredImage.asset->url,
   publicationDate,
   summary,
   body,

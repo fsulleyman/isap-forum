@@ -1,5 +1,6 @@
 ---
 import type { NewsArticle } from '@/types/sanity';
+import { urlFor } from '@/lib/sanity/image';
 
 interface Props {
   article: NewsArticle;
@@ -7,15 +8,20 @@ interface Props {
 
 const { article } = Astro.props;
 const slug = typeof article.slug === 'string' ? article.slug : article.slug.current;
+
+const imageBuilder = article.featuredImage ? urlFor(article.featuredImage) : null;
+const resolvedImageUrl = imageBuilder
+  ? imageBuilder.width(800).height(450).fit('crop').auto('format').url()
+  : article.imageUrl || null;
 ---
 
 <article class="bg-white rounded-xl border border-isap-border/70 overflow-hidden shadow-sm hover:shadow-md hover:border-isap-gold/50 transition-all flex flex-col justify-between group">
   <div>
     <!-- Article Graphic / Image Header -->
     <div class="relative h-48 bg-gradient-to-tr from-isap-navy-dark via-isap-navy to-isap-navy-light flex items-center justify-center overflow-hidden">
-      {article.imageUrl ? (
+      {resolvedImageUrl ? (
         <img
-          src={article.imageUrl}
+          src={resolvedImageUrl}
           alt={article.title}
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
