@@ -1,0 +1,144 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import PartnerCard from '@/components/cards/PartnerCard.astro';
+import { getApprovedInstitutions } from '@/lib/sanity/client';
+
+const institutions = await getApprovedInstitutions();
+
+// Strict categorization: Never interchange or mix categories
+const sponsors = institutions.filter((i) => i.category === 'Sponsor');
+const partners = institutions.filter((i) => i.category === 'Partner');
+const supporting = institutions.filter((i) => i.category === 'Supporting');
+const participating = institutions.filter((i) => i.category === 'Participating');
+---
+
+<Layout
+  title="Partners & Participating Institutions — ISAP Forum 2026"
+  description="Collaborating academic institutions, professional associations, supporting industry bodies, and official sponsors."
+>
+  <PageBanner
+    title="Partners & Institutions"
+    subtitle="Academic Custodians, Institutional Partners & Industry Collaborators"
+    badge="Ecosystem Collaboration"
+    breadcrumbs={[{ label: 'Partners' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-16">
+      
+      <!-- Academic & Institutional Partners -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Core Academic Pillar
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            Institutional & Academic Partners
+          </h2>
+        </div>
+
+        {partners.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {partners.map((inst) => (
+              <PartnerCard institution={inst} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-xs text-isap-steel italic">Partner institutions pending publication clearance.</p>
+        )}
+      </div>
+
+      <!-- Supporting Institutions -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Industry & Public Support
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            Supporting Institutions & Associations
+          </h2>
+        </div>
+
+        {supporting.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {supporting.map((inst) => (
+              <PartnerCard institution={inst} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-xs text-isap-steel italic">Supporting institutions pending publication clearance.</p>
+        )}
+      </div>
+
+      <!-- Participating Institutions -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Scholarly & Educational Network
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            Participating Institutions
+          </h2>
+        </div>
+
+        {participating.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {participating.map((inst) => (
+              <PartnerCard institution={inst} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-xs text-isap-steel italic">Participating institutions pending publication clearance.</p>
+        )}
+      </div>
+
+      <!-- Official Sponsors (Strictly Separated) -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Infrastructure & Corporate Sponsorship
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            Official Forum Sponsors
+          </h2>
+        </div>
+
+        {sponsors.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sponsors.map((inst) => (
+              <PartnerCard institution={inst} />
+            ))}
+          </div>
+        ) : (
+          <div class="p-8 rounded-xl bg-white border border-isap-border/70 text-center max-w-lg mx-auto space-y-2">
+            <h4 class="text-base font-bold font-heading text-isap-navy">Sponsorship Inquiries</h4>
+            <p class="text-xs text-isap-steel">
+              Official corporate sponsors are ratified under strict academic independence guidelines. Contact the secretariat for prospectus details.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <!-- Partnership CTA -->
+      <div class="p-8 rounded-2xl bg-isap-navy text-white text-center space-y-4 shadow-md max-w-3xl mx-auto">
+        <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">
+          Become an Institutional Partner or Sponsor
+        </h3>
+        <p class="text-sm text-isap-steel/90 leading-relaxed max-w-xl mx-auto">
+          Collaborate with university faculties, researchers, and practitioner delegations to shape digital infrastructure in Ghana and Africa.
+        </p>
+        <div class="pt-2">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-sm shadow hover:brightness-105 transition-all"
+          >
+            <span>Request Partnership Prospectus</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

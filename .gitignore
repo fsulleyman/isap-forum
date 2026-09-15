@@ -1,14 +1,28 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+studio/node_modules/
 
-# OS / Editor junk
+# Build outputs
+dist/
+.astro/
+studio/dist/
+.netlify/
+
+# Environment variables & credentials
+.env
+.env.*
+!.env.example
+
+# Sanity local cache & auth
+.sanity/
+studio/.sanity/
+*.log
+
+# OS & Editor files
 .DS_Store
 Thumbs.db
 *.swp
 *.tmp
 .vscode/
 .idea/
-
-# Local logs
-*.log

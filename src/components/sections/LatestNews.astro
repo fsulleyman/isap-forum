@@ -1,0 +1,48 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import NewsCard from '@/components/cards/NewsCard.astro';
+import type { NewsArticle } from '@/types/sanity';
+
+interface Props {
+  articles: NewsArticle[];
+}
+
+const { articles } = Astro.props;
+// Strict status filter check: Published only
+const publishedArticles = articles.filter((a) => a.status === 'Published');
+---
+
+<section class="py-16 md:py-24 bg-white border-b border-isap-border/30">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <SectionHeading
+        eyebrow="Announcements & Dispatches"
+        title="Latest Forum Updates & Media"
+        description="Official press releases, calls for papers, and updates from the ISAP Secretariat."
+      />
+      <div class="shrink-0 mb-10 md:mb-14">
+        <a
+          href="/news"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-navy hover:bg-isap-navy-light text-white font-semibold text-sm transition-colors"
+        >
+          <span>View All Announcements</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-isap-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    {publishedArticles.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {publishedArticles.slice(0, 3).map((article) => (
+          <NewsCard article={article} />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12 text-isap-steel text-sm">
+        No published news articles available.
+      </div>
+    )}
+
+  </div>
+</section>

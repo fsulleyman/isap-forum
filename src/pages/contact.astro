@@ -1,0 +1,130 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import { ContactForm } from '@/components/forms/ContactForm';
+import { getContactPage, getEventFacts } from '@/lib/sanity/client';
+
+const contactPage = await getContactPage();
+const eventFacts = await getEventFacts();
+---
+
+<Layout
+  title={`${contactPage.bannerTitle} — ISAP Forum 2026`}
+  description={contactPage.bannerSubtitle}
+>
+  <PageBanner
+    title={contactPage.bannerTitle}
+    subtitle={contactPage.bannerSubtitle}
+    badge="Secretariat Support"
+    breadcrumbs={[{ label: 'Contact' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Secretariat Institutional Information Block (Left Column) -->
+        <div class="lg:col-span-5 space-y-8">
+          
+          <div class="bg-white rounded-2xl border border-isap-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+            <div>
+              <span class="text-xs font-bold text-isap-navy uppercase tracking-wider block mb-1">
+                Institutional Directorate
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy">
+                Organizing Secretariat
+              </h2>
+            </div>
+
+            <!-- Org Block -->
+            <div class="p-4 rounded-xl bg-isap-off-white border border-isap-border/60 text-xs sm:text-sm font-medium text-isap-gray-dark leading-relaxed whitespace-pre-line">
+              {contactPage.orgBlock}
+            </div>
+
+            <!-- Official Contact Protocol Notice -->
+            <div class="p-4 rounded-xl bg-amber-50 border border-amber-200/80 space-y-2">
+              <span class="text-xs font-bold text-amber-900 uppercase tracking-wider block">
+                Official Contact Policy
+              </span>
+              <p class="text-xs text-amber-950 font-mono leading-relaxed break-all">
+                {contactPage.officialContactNotice}
+              </p>
+            </div>
+
+            <!-- Direct Contact Fields with Explicit Bracket Placeholders -->
+            <div class="space-y-4 pt-2 border-t border-isap-border/40 text-sm">
+              <div class="space-y-1">
+                <span class="text-xs text-isap-steel uppercase font-semibold">Official Email:</span>
+                <p class="text-xs sm:text-sm font-mono font-medium text-isap-navy bg-isap-navy/5 p-2.5 rounded border border-isap-border/50 break-all">
+                  {contactPage.email}
+                </p>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-xs text-isap-steel uppercase font-semibold">Official Telephone:</span>
+                <p class="text-xs sm:text-sm font-mono font-medium text-isap-navy bg-isap-navy/5 p-2.5 rounded border border-isap-border/50 break-all">
+                  {contactPage.phone}
+                </p>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-xs text-isap-steel uppercase font-semibold">Venue Physical Location:</span>
+                <p class="text-xs text-isap-gray-dark leading-relaxed">
+                  {contactPage.physicalAddress}
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Conference Date Recap Card -->
+          <div class="p-6 rounded-xl bg-isap-navy text-white space-y-2 shadow-md">
+            <span class="text-xs font-semibold text-isap-gold uppercase tracking-wider">Conference Session</span>
+            <p class="text-base font-bold text-white">{eventFacts.date}</p>
+            <p class="text-xs text-isap-steel">{eventFacts.venue}</p>
+          </div>
+
+        </div>
+
+        <!-- Contact Form Column (Right Column) -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-2xl border border-isap-border/70 p-6 sm:p-10 shadow-sm space-y-6">
+            <div class="space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-isap-gold">
+                Direct Communication
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-bold font-heading text-isap-navy">
+                Dispatch an Inquiry to the Conveners
+              </h2>
+              <p class="text-sm text-isap-gray-dark/85 leading-relaxed">
+                Use the form below to transmit delegate registration questions, paper submission inquiries, or partnership proposals directly to the ISAP organizing secretariat.
+              </p>
+            </div>
+
+            {/* Hidden static duplicate form to guarantee Netlify build-time form detection */}
+            <form name="contact" action="/contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="text" name="bot-field" />
+              <input type="text" name="name" />
+              <input type="text" name="organisation" />
+              <input type="email" name="email" />
+              <select name="subject">
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Registration">Registration Inquiry</option>
+                <option value="Partnership-Sponsorship">Partnership & Sponsorship</option>
+                <option value="Media">Media & Press Relations</option>
+                <option value="Speaking-Participation">Speaking & Participation</option>
+                <option value="Research Collaboration">Research Collaboration</option>
+              </select>
+              <textarea name="message"></textarea>
+            </form>
+
+            <!-- Netlify Form Component Island -->
+            <ContactForm client:load />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

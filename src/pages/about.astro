@@ -1,0 +1,120 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import SectionHeading from '@/components/sections/SectionHeading.astro';
+import { getAboutPage, getEventFacts } from '@/lib/sanity/client';
+
+const aboutPage = await getAboutPage();
+const eventFacts = await getEventFacts();
+---
+
+<Layout
+  title={`${aboutPage.bannerTitle} — ISAP Forum`}
+  description={aboutPage.bannerSubtitle}
+>
+  <PageBanner
+    title={aboutPage.bannerTitle}
+    subtitle={aboutPage.bannerSubtitle}
+    badge="Academic Foundation"
+    breadcrumbs={[{ label: 'About ISAP' }]}
+  />
+
+  <!-- Introduction Overview -->
+  <section class="py-16 md:py-20 bg-white border-b border-isap-border/30">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-isap-navy/5 text-isap-navy text-xs font-semibold uppercase tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-isap-gold"></span>
+          <span>Institutional Charter</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-isap-navy leading-tight">
+          A Permanent Nexus for Information Systems in Ghana and Africa
+        </h2>
+        <p class="text-base sm:text-lg text-isap-gray-dark leading-relaxed">
+          {aboutPage.introText}
+        </p>
+      </div>
+
+      <!-- Mission & Vision Dual Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12">
+        <!-- Mission -->
+        <div class="p-8 rounded-xl bg-isap-off-white border border-isap-border/70 shadow-sm relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-isap-navy text-white flex items-center justify-center mb-4 font-bold text-sm">
+            01
+          </div>
+          <h3 class="text-xl font-bold font-heading text-isap-navy mb-3">Our Mission</h3>
+          <p class="text-sm sm:text-base text-isap-gray-dark leading-relaxed">
+            {aboutPage.mission}
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="p-8 rounded-xl bg-isap-off-white border border-isap-border/70 shadow-sm relative overflow-hidden">
+          <div class="w-10 h-10 rounded-lg bg-isap-gold text-isap-navy-dark flex items-center justify-center mb-4 font-bold text-sm">
+            02
+          </div>
+          <h3 class="text-xl font-bold font-heading text-isap-navy mb-3">Our Vision</h3>
+          <p class="text-sm sm:text-base text-isap-gray-dark leading-relaxed">
+            {aboutPage.vision}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Core Objectives (Verbatim from Section 3.2) -->
+  <section class="py-16 md:py-24 bg-isap-off-white border-b border-isap-border/30">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Mandate & Constitutional Charter"
+        title={aboutPage.objectivesHeading}
+        description="The five statutory pillars establishing the scope, research translation, and collaborative mandate of the ISAP Forum."
+        align="center"
+      />
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        {aboutPage.objectives.map((obj) => (
+          <div class="p-6 sm:p-7 rounded-xl bg-white border border-isap-border/70 shadow-sm hover:border-isap-gold/50 transition-colors flex flex-col sm:flex-row gap-5 items-start">
+            <div class="w-10 h-10 rounded-full bg-isap-navy text-white font-mono font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+              0{obj.number}
+            </div>
+            <div class="space-y-1.5 flex-grow">
+              <h3 class="text-lg sm:text-xl font-bold font-heading text-isap-navy">
+                {obj.title}
+              </h3>
+              <p class="text-sm sm:text-base text-isap-gray-dark/90 leading-relaxed capitalize-first">
+                {obj.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Host Institution Accreditation Block -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="p-8 sm:p-10 rounded-2xl bg-isap-navy text-white border border-white/10 shadow-lg flex flex-col sm:flex-row items-center gap-8">
+        <div class="w-20 h-20 rounded-xl bg-white p-2 shrink-0 shadow-md">
+          <img
+            src="/isap-logo.jpg"
+            alt="ISAP Forum Logo"
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="text-xs font-semibold text-isap-gold uppercase tracking-wider block">
+            Institutional Custodianship
+          </span>
+          <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">
+            {eventFacts.hostInstitution}
+          </h3>
+          <p class="text-xs sm:text-sm text-isap-steel leading-relaxed">
+            {aboutPage.hostDepartmentDetails}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

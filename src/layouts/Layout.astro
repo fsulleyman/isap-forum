@@ -1,0 +1,95 @@
+---
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import '@/styles/global.css';
+import { getEventFacts } from '@/lib/sanity/client';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  canonicalUrl?: string;
+}
+
+const {
+  title = "ISAP Forum 2026 — Information Systems Academics and Practitioners' Forum",
+  description = "ISAP Forum 2026 connects Information Systems academics, researchers, students, industry practitioners, and policy stakeholders in Ghana to bridge theory, practice, and national policy.",
+  ogImage = "/isap-logo.jpg",
+  ogType = "website",
+  canonicalUrl = Astro.url.href,
+} = Astro.props;
+
+const eventFacts = await getEventFacts();
+
+// JSON-LD Structured Data for the conference
+const eventStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  "name": eventFacts.name,
+  "description": eventFacts.theme,
+  "startDate": "2026-10-07T08:30:00+00:00",
+  "endDate": "2026-10-07T17:00:00+00:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "UPSA PCU Auditorium",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "University of Professional Studies, Accra",
+      "addressLocality": "Accra",
+      "addressCountry": "GH"
+    }
+  },
+  "organizer": {
+    "@type": "EducationalOrganization",
+    "name": eventFacts.hostInstitution,
+    "url": "https://upsa.edu.gh"
+  }
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpeg" href="/isap-logo.jpg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1B2A5E" />
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url).href} />
+    <meta property="og:site_name" content="ISAP Forum" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.url).href} />
+
+    <!-- JSON-LD Event Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(eventStructuredData)} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-isap-off-white text-isap-gray-dark font-body antialiased selection:bg-isap-gold selection:text-isap-navy-dark">
+    <Header />
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

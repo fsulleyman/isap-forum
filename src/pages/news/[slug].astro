@@ -1,0 +1,122 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import { getPublishedNews, getPublishedNewsBySlug } from '@/lib/sanity/client';
+import type { NewsArticle } from '@/types/sanity';
+
+export async function getStaticPaths() {
+  const articles = await getPublishedNews();
+  return articles.map((article) => {
+    const slug = typeof article.slug === 'string' ? article.slug : article.slug.current;
+    return {
+      params: { slug },
+      props: { article },
+    };
+  });
+}
+
+interface Props {
+  article: NewsArticle;
+}
+
+const { article: staticArticle } = Astro.props;
+const { slug } = Astro.params;
+
+// Ensure article data is loaded
+const article = staticArticle || (slug ? await getPublishedNewsBySlug(slug) : null);
+
+if (!article) {
+  return Astro.redirect('/news');
+}
+
+const articleSlug = typeof article.slug === 'string' ? article.slug : article.slug.current;
+---
+
+<Layout
+  title={`${article.title} — ISAP Forum News`}
+  description={article.summary}
+  ogType="article"
+  ogImage={article.imageUrl || '/isap-logo.jpg'}
+>
+  <PageBanner
+    title={article.title}
+    subtitle={`Published on ${article.publicationDate} · By ${article.author}`}
+    badge="Official Press Release"
+    breadcrumbs={[
+      { label: 'News & Updates', href: '/news' },
+      { label: article.title }
+    ]}
+  />
+
+  <article class="py-16 md:py-24 bg-white" itemscope itemtype="https://schema.org/NewsArticle">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl space-y-8">
+      
+      <!-- Article Meta Line -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-isap-border/60 text-xs sm:text-sm text-isap-steel">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-isap-navy">Author:</span>
+          <span itemprop="author">{article.author}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-isap-navy">Publication Date:</span>
+          <time itemprop="datePublished" datetime={article.publicationDate}>
+            {article.publicationDate}
+          </time>
+        </div>
+      </div>
+
+      <!-- Executive Summary Lead -->
+      <div class="p-6 sm:p-8 rounded-xl bg-isap-off-white border-l-4 border-isap-gold shadow-sm">
+        <span class="text-xs font-bold text-isap-navy uppercase tracking-wider block mb-2">
+          Executive Summary
+        </span>
+        <p class="text-base sm:text-lg text-isap-navy font-medium leading-relaxed" itemprop="description">
+          {article.summary}
+        </p>
+      </div>
+
+      <!-- Article Main Body -->
+      <div class="prose prose-lg max-w-none text-isap-gray-dark leading-relaxed space-y-6 pt-4" itemprop="articleBody">
+        <p>
+          The Information Systems Academics and Practitioners' Forum (ISAP Forum) convenes at the University of Professional Studies, Accra (UPSA) to deliberate on key digital infrastructure advancements across the Republic of Ghana. This dispatch outlines critical academic guidelines, technical frameworks, and multistakeholder deliberations advancing our national digital agenda.
+        </p>
+
+        <h3 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy pt-4">
+          Institutional Significance & Policy Relevance
+        </h3>
+
+        <p>
+          As digital identity ecosystems and public sector service automation expand across African governance, the intersection of rigorous information systems inquiry and technical execution becomes central to national competitiveness. Academic researchers and industry leaders are encouraged to engage actively with the proceedings, review the official concept notes, and contribute evidence-based case studies.
+        </p>
+
+        <h3 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy pt-4">
+          Participation & Inquiries
+        </h3>
+
+        <p>
+          Members of the academic community, public sector institutions, and technology enterprises interested in participating in the deliberations or citing official communiqués should consult the organizing secretariat via official channels.
+        </p>
+      </div>
+
+      <!-- Article Action Footer -->
+      <div class="pt-8 border-t border-isap-border/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a
+          href="/news"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-isap-navy hover:text-isap-gold transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Back to All News</span>
+        </a>
+
+        <a
+          href="/register"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-xs shadow hover:brightness-105 transition-all"
+        >
+          <span>Register for ISAP 2026</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </article>
+</Layout>

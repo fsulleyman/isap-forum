@@ -1,0 +1,102 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import ResourceCard from '@/components/cards/ResourceCard.astro';
+import { getApprovedResources } from '@/lib/sanity/client';
+
+const resources = await getApprovedResources();
+
+const beforeEventResources = resources.filter((r) => r.category === 'Before Event');
+const afterEventResources = resources.filter((r) => r.category === 'After Event');
+---
+
+<Layout
+  title="Publications & Resources — ISAP Forum 2026"
+  description="Official concept notes, briefing papers, selected reading lists, and post-conference proceedings."
+>
+  <PageBanner
+    title="Publications & Resources"
+    subtitle="Concept Notes, Briefing Compendiums & Conference Proceedings"
+    badge="Knowledge Repository"
+    breadcrumbs={[{ label: 'Resources' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-16">
+      
+      <!-- Before Event Resources -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Pre-Conference Preparation
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            Before-Event Briefings & Reading Lists
+          </h2>
+          <p class="text-xs sm:text-sm text-isap-steel mt-1">
+            Curated preparatory literature, concept documents, and thematic background notes for attending delegates.
+          </p>
+        </div>
+
+        {beforeEventResources.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {beforeEventResources.map((res) => (
+              <ResourceCard resource={res} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-xs text-isap-steel italic">No pre-event briefing notes published yet.</p>
+        )}
+      </div>
+
+      <!-- After Event Resources -->
+      <div class="space-y-6">
+        <div class="border-b border-isap-border/60 pb-3">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Post-Conference Proceedings
+          </span>
+          <h2 class="text-2xl font-bold font-heading text-isap-navy">
+            After-Event Communiqués & Papers
+          </h2>
+          <p class="text-xs sm:text-sm text-isap-steel mt-1">
+            Official policy recommendations, presentation slide decks, and peer-reviewed conference proceedings.
+          </p>
+        </div>
+
+        {afterEventResources.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {afterEventResources.map((res) => (
+              <ResourceCard resource={res} />
+            ))}
+          </div>
+        ) : (
+          <div class="p-8 rounded-xl bg-white border border-isap-border/70 text-center max-w-lg mx-auto space-y-2">
+            <h4 class="text-base font-bold font-heading text-isap-navy">Post-Event Repository</h4>
+            <p class="text-xs text-isap-steel">
+              Conference communiqués, plenary recordings, and presentation slide decks will be uploaded following the conclusion of proceedings on 7 October 2026.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <!-- Academic Inquiry Notice -->
+      <div class="p-6 rounded-xl bg-isap-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div class="space-y-1 text-center sm:text-left">
+          <h4 class="text-base font-bold font-heading text-white">
+            Contributing Academic Research or Case Studies?
+          </h4>
+          <p class="text-xs text-isap-steel">
+            Inquire about publication in the official ISAP Forum 2026 Proceedings.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="shrink-0 px-5 py-2.5 rounded bg-isap-gold text-isap-navy-dark font-bold text-xs hover:brightness-105 transition-all"
+        >
+          Contact Editorial Board &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>

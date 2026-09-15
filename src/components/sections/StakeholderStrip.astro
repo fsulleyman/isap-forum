@@ -1,0 +1,50 @@
+---
+import type { StakeholderCategory } from '@/types/sanity';
+
+interface Props {
+  heading: string;
+  stakeholders: StakeholderCategory[];
+}
+
+const { heading, stakeholders } = Astro.props;
+---
+
+<section class="py-12 bg-isap-navy text-white border-y border-white/10" aria-label="Stakeholder Ecosystem">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <span class="text-xs font-semibold text-isap-gold uppercase tracking-wider block mb-1">
+        Ecosystem Representation
+      </span>
+      <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">
+        {heading}
+      </h3>
+      <p class="text-xs sm:text-sm text-isap-steel mt-1">
+        Active participation across academic faculties, enterprise technology sectors, public institutions, and student bodies.
+      </p>
+    </div>
+
+    <!-- Stakeholder Category Tiles -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {stakeholders.map((s) => (
+        <div class="bg-isap-navy-dark/60 border border-white/10 rounded-lg p-5 hover:border-isap-gold/40 transition-colors space-y-2">
+          <div class="w-10 h-10 rounded-lg bg-isap-gold/15 border border-isap-gold/30 flex items-center justify-center text-isap-gold mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h4 class="text-base font-bold text-white font-heading leading-snug">
+            {s.name}
+          </h4>
+          {s.description && (
+            <p class="text-xs text-isap-steel/90 leading-relaxed">
+              {s.description}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

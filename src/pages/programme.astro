@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import ProgrammeCard from '@/components/cards/ProgrammeCard.astro';
+import { getProgrammeSessions, getEventFacts } from '@/lib/sanity/client';
+
+const sessions = await getProgrammeSessions();
+const eventFacts = await getEventFacts();
+---
+
+<Layout
+  title="Conference Programme — ISAP Forum 2026"
+  description={`Schedule of proceedings for ISAP Forum 2026 on ${eventFacts.date} at ${eventFacts.venue}.`}
+>
+  <PageBanner
+    title="Conference Programme"
+    subtitle={`Comprehensive Schedule of Proceedings · ${eventFacts.date}`}
+    badge="Conference Agenda"
+    breadcrumbs={[{ label: 'Programme' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8">
+      
+      <!-- Agenda Intro & Venue Recap -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-white border border-isap-border/70 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-1.5">
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block">
+            Plenary Timetable
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy">
+            11 Sessions Across Academic & Practitioner Tracks
+          </h2>
+          <p class="text-xs sm:text-sm text-isap-steel">
+            All proceedings convene at the {eventFacts.venue}.
+          </p>
+        </div>
+
+        <div class="shrink-0">
+          <a
+            href="/register"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-sm shadow hover:brightness-105 transition-all"
+          >
+            <span>Register for Free</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Schedule Stacked Cards -->
+      <div class="space-y-4">
+        {sessions.map((session) => (
+          <ProgrammeCard session={session} />
+        ))}
+      </div>
+
+      <!-- Governance Note -->
+      <div class="p-4 rounded-xl bg-isap-navy/5 border border-isap-border/60 text-center text-xs text-isap-steel leading-relaxed">
+        <span class="font-semibold text-isap-navy">Editorial Transparency:</span> Unconfirmed speaker designations and session timings are strictly governed in the Sanity CMS and render as <span class="font-mono text-amber-700 font-bold">TBA</span> until formal accreditation is ratified.
+      </div>
+
+    </div>
+  </section>
+</Layout>

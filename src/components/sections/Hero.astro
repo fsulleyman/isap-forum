@@ -1,0 +1,137 @@
+---
+import { CountdownTimer } from '@/components/sections/CountdownTimer';
+import type { HomePageContent, EventFacts } from '@/types/sanity';
+
+interface Props {
+  content: HomePageContent;
+  facts: EventFacts;
+}
+
+const { content, facts } = Astro.props;
+---
+
+<section class="relative w-full overflow-hidden bg-isap-navy-dark text-white border-b border-white/10" aria-labelledby="hero-title">
+  <!-- Background Image with Deep Navy Overlays -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <img
+      src="/hero-bg.jpg"
+      alt=""
+      aria-hidden="true"
+      class="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity filter saturate-50 scale-105 transform motion-safe:transition-transform motion-safe:duration-1000"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-isap-navy-dark via-isap-navy/95 to-isap-navy/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-isap-navy-dark via-transparent to-isap-navy-dark/60"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800e_1px,transparent_1px),linear-gradient(to_bottom,#8080800e_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Hero Copy Column -->
+      <div class="lg:col-span-7 xl:col-span-8 space-y-6">
+        
+        <!-- Eyebrow Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-isap-gold/15 border border-isap-gold/40 text-isap-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">
+          <span class="w-2 h-2 rounded-full bg-isap-gold animate-pulse"></span>
+          <span>{content.heroSubtitle}</span>
+        </div>
+
+        <!-- H1 Headline -->
+        <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-white tracking-tight leading-[1.1]">
+          {content.heroHeadline}
+        </h1>
+
+        <!-- Theme Statement -->
+        <div class="border-l-4 border-isap-gold pl-4 py-1">
+          <p class="text-lg sm:text-xl md:text-2xl text-white font-medium leading-snug">
+            "{facts.theme}"
+          </p>
+        </div>
+
+        <!-- Tagline -->
+        <p class="text-base sm:text-lg text-isap-steel leading-relaxed max-w-2xl">
+          Connecting Information Systems researchers, industry leaders, public sector authorities, and tech innovators to bridge theory, practice, and national policy across Ghana and Africa.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/register"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-isap-gold hover:bg-[#b88616] text-isap-navy-dark font-bold text-base shadow-lg hover:shadow-xl transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-isap-navy"
+          >
+            <span>{content.heroPrimaryCtaText}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+
+          <a
+            href="/programme"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-base transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <span>{content.heroSecondaryCtaText}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-isap-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </a>
+        </div>
+
+        <!-- Countdown Timer Component Island -->
+        <div class="pt-4 border-t border-white/10">
+          <CountdownTimer client:load />
+        </div>
+      </div>
+
+      <!-- Hero Event Card / Visual Column -->
+      <div class="lg:col-span-5 xl:col-span-4">
+        <div class="relative bg-isap-navy/90 backdrop-blur-md border border-white/15 rounded-xl p-6 sm:p-8 shadow-2xl space-y-6">
+          
+          <!-- Card Header Tag -->
+          <div class="flex items-center justify-between pb-4 border-b border-white/10">
+            <span class="text-xs font-semibold uppercase tracking-wider text-isap-gold flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              <span>Official Event Brief</span>
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-300 border border-green-500/30">
+              Registration Open
+            </span>
+          </div>
+
+          <!-- Fact: Date -->
+          <div class="space-y-1">
+            <span class="text-xs text-isap-steel uppercase font-medium tracking-wider">Date</span>
+            <p class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-isap-gold"></span>
+              <span>{facts.date}</span>
+            </p>
+          </div>
+
+          <!-- Fact: Venue -->
+          <div class="space-y-1">
+            <span class="text-xs text-isap-steel uppercase font-medium tracking-wider">Venue</span>
+            <p class="text-sm font-semibold text-white/95 leading-snug">
+              {facts.venue}
+            </p>
+          </div>
+
+          <!-- Fact: Host Institution -->
+          <div class="space-y-1 pt-2 border-t border-white/10">
+            <span class="text-xs text-isap-steel uppercase font-medium tracking-wider">Host Department</span>
+            <p class="text-xs text-white/85 leading-relaxed">
+              {facts.hostInstitution}
+            </p>
+          </div>
+
+          <!-- Register Quick Action -->
+          <div class="pt-2">
+            <a
+              href="/register"
+              class="block w-full py-3 px-4 rounded-lg bg-isap-gold text-isap-navy-dark text-center font-bold text-sm hover:brightness-105 transition-all shadow"
+            >
+              Secure Your Attendance &rarr;
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

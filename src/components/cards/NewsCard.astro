@@ -1,0 +1,70 @@
+---
+import type { NewsArticle } from '@/types/sanity';
+
+interface Props {
+  article: NewsArticle;
+}
+
+const { article } = Astro.props;
+const slug = typeof article.slug === 'string' ? article.slug : article.slug.current;
+---
+
+<article class="bg-white rounded-xl border border-isap-border/70 overflow-hidden shadow-sm hover:shadow-md hover:border-isap-gold/50 transition-all flex flex-col justify-between group">
+  <div>
+    <!-- Article Graphic / Image Header -->
+    <div class="relative h-48 bg-gradient-to-tr from-isap-navy-dark via-isap-navy to-isap-navy-light flex items-center justify-center overflow-hidden">
+      {article.imageUrl ? (
+        <img
+          src={article.imageUrl}
+          alt={article.title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      ) : (
+        <div class="flex flex-col items-center justify-center p-6 text-center">
+          <div class="w-12 h-12 rounded-lg bg-white/10 border border-isap-gold/30 flex items-center justify-center text-isap-gold mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+          </div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-isap-steel">
+            Official Bulletin
+          </span>
+        </div>
+      )}
+      <div class="absolute top-3 left-3">
+        <span class="px-2.5 py-1 rounded bg-isap-navy-dark/90 backdrop-blur-sm text-[11px] font-semibold text-isap-gold border border-white/10">
+          {article.publicationDate}
+        </span>
+      </div>
+    </div>
+
+    <!-- Article Content -->
+    <div class="p-5 sm:p-6 space-y-3">
+      <div class="flex items-center gap-2 text-xs text-isap-steel">
+        <span>By {article.author}</span>
+        <span>•</span>
+        <span>ISAP News</span>
+      </div>
+
+      <h3 class="text-base sm:text-lg font-bold font-heading text-isap-navy group-hover:text-isap-navy-light transition-colors leading-snug line-clamp-2">
+        <a href={`/news/${slug}`} class="focus:outline-none focus:underline">
+          {article.title}
+        </a>
+      </h3>
+
+      <p class="text-xs sm:text-sm text-isap-gray-dark/85 line-clamp-3 leading-relaxed">
+        {article.summary}
+      </p>
+    </div>
+  </div>
+
+  <!-- Card Action -->
+  <div class="px-5 sm:px-6 pb-5 pt-3 border-t border-isap-border/30">
+    <a
+      href={`/news/${slug}`}
+      class="inline-flex items-center gap-1.5 text-xs font-bold text-isap-navy group-hover:text-isap-gold transition-colors"
+    >
+      <span>Read Full Update</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>

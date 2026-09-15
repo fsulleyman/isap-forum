@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 223 6% 31%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 223 6% 31%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 6% 31%;
+
+    --primary: 227 55% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 42 74% 45%;
+    --secondary-foreground: 227 54% 15%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 4% 56%;
+
+    --accent: 43 74% 89%;
+    --accent-foreground: 227 55% 24%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 6% 85%;
+    --input: 220 6% 85%;
+    --ring: 42 74% 45%;
+
+    --radius: 0.5rem;
+
+    /* ISAP Brand Design Tokens in HSL */
+    --isap-navy: 227 55% 24%;       /* #1B2A5E */
+    --isap-navy-dark: 227 54% 15%;  /* #111A3A */
+    --isap-navy-light: 226 42% 31%; /* #2E3D70 */
+    --isap-gold: 42 74% 45%;        /* #C9971E */
+    --isap-gold-light: 43 74% 89%;  /* #F8EDCF */
+    --isap-steel: 220 4% 56%;       /* #8A8D93 */
+    --isap-gray-dark: 223 6% 31%;   /* #4B4E55 */
+    --isap-border: 220 6% 85%;      /* #D5D7DB */
+    --isap-gray-light: 220 14% 96%; /* #F3F4F6 */
+    --isap-white: 0 0% 100%;        /* #FFFFFF */
+    --isap-off-white: 0 0% 98%;     /* #FAFAFA */
+  }
+
+  body {
+    @apply bg-isap-off-white text-isap-gray-dark font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-isap-navy font-bold tracking-tight;
+  }
+}

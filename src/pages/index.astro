@@ -1,0 +1,59 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import WhyThisForumMatters from '@/components/sections/WhyThisForumMatters.astro';
+import StakeholderStrip from '@/components/sections/StakeholderStrip.astro';
+import ProgrammePreview from '@/components/sections/ProgrammePreview.astro';
+import FeaturedSpeakers from '@/components/sections/FeaturedSpeakers.astro';
+import LatestNews from '@/components/sections/LatestNews.astro';
+import CTASection from '@/components/sections/CTASection.astro';
+import {
+  getEventFacts,
+  getHomePage,
+  getProgrammeSessions,
+  getPublishedSpeakers,
+  getPublishedNews,
+} from '@/lib/sanity/client';
+
+const eventFacts = await getEventFacts();
+const homePage = await getHomePage();
+const sessions = await getProgrammeSessions();
+const speakers = await getPublishedSpeakers();
+const news = await getPublishedNews();
+---
+
+<Layout
+  title={`${homePage.heroHeadline} — ${homePage.heroSubtitle}`}
+  description={`${eventFacts.theme}. Wednesday, 7 October 2026 at ${eventFacts.venue}.`}
+>
+  <!-- Hero Section -->
+  <Hero content={homePage} facts={eventFacts} />
+
+  <!-- Why This Forum Matters & About Blurb -->
+  <WhyThisForumMatters
+    aboutBlurb={homePage.aboutForumBlurb}
+    cards={homePage.whyItMattersCards}
+  />
+
+  <!-- Stakeholder Strip -->
+  <StakeholderStrip
+    heading={homePage.stakeholderStripHeading}
+    stakeholders={homePage.stakeholders}
+  />
+
+  <!-- Programme Preview -->
+  <ProgrammePreview sessions={sessions} />
+
+  <!-- Featured Speakers -->
+  <FeaturedSpeakers speakers={speakers} />
+
+  <!-- Latest News Preview -->
+  <LatestNews articles={news} />
+
+  <!-- Final CTA Section -->
+  <CTASection
+    headline={homePage.finalCtaHeadline}
+    description={homePage.finalCtaDescription}
+    buttonText={homePage.finalCtaButtonText}
+  />
+</Layout>

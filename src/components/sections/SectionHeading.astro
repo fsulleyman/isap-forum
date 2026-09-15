@@ -1,0 +1,49 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: 'left' | 'center';
+  light?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = 'left',
+  light = false,
+} = Astro.props;
+
+const isCenter = align === 'center';
+---
+
+<div class={`space-y-3 mb-10 md:mb-14 ${isCenter ? 'text-center mx-auto max-w-3xl' : 'max-w-3xl'}`}>
+  {eyebrow && (
+    <div class={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
+      light 
+        ? 'bg-isap-gold/20 text-isap-gold border border-isap-gold/40' 
+        : 'bg-isap-navy/5 text-isap-navy border border-isap-navy/15'
+    }`}>
+      <span class="w-1.5 h-1.5 rounded-full bg-isap-gold"></span>
+      <span>{eyebrow}</span>
+    </div>
+  )}
+
+  <h2 class={`text-2xl sm:text-3xl md:text-4xl font-bold font-heading tracking-tight leading-tight ${
+    light ? 'text-white' : 'text-isap-navy'
+  }`}>
+    {title}
+  </h2>
+
+  <!-- Accent Divider -->
+  <div class={`w-16 h-1 bg-isap-gold rounded-full ${isCenter ? 'mx-auto' : ''}`}></div>
+
+  {description && (
+    <p class={`text-base sm:text-lg leading-relaxed ${
+      light ? 'text-isap-steel/90' : 'text-isap-gray-dark/90'
+    }`}>
+      {description}
+    </p>
+  )}
+</div>

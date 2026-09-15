@@ -1,0 +1,53 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import NewsCard from '@/components/cards/NewsCard.astro';
+import { getPublishedNews } from '@/lib/sanity/client';
+
+const articles = await getPublishedNews();
+---
+
+<Layout
+  title="News & Updates — ISAP Forum"
+  description="Official press releases, announcements, research calls, and editorial dispatches from the ISAP Forum Secretariat."
+>
+  <PageBanner
+    title="News & Announcements"
+    subtitle="Official Communications, Research Calls & Media Dispatches"
+    badge="Secretariat Media"
+    breadcrumbs={[{ label: 'News & Updates' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-10">
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-isap-border/60">
+        <div>
+          <span class="text-xs font-bold text-isap-gold uppercase tracking-wider block mb-1">
+            Editorial Feed
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy">
+            Published Announcements
+          </h2>
+        </div>
+        <span class="text-xs text-isap-steel font-mono">
+          Showing {articles.length} cleared publication(s)
+        </span>
+      </div>
+
+      {articles.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {articles.map((article) => (
+            <NewsCard article={article} />
+          ))}
+        </div>
+      ) : (
+        <div class="p-12 text-center bg-white rounded-2xl border border-isap-border max-w-md mx-auto space-y-2">
+          <p class="text-sm font-semibold text-isap-navy">No Published Articles</p>
+          <p class="text-xs text-isap-steel">Draft releases are undergoing editorial review.</p>
+        </div>
+      )}
+
+    </div>
+  </section>
+</Layout>

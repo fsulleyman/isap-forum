@@ -1,0 +1,51 @@
+---
+interface Props {
+  headline: string;
+  description: string;
+  buttonText: string;
+}
+
+const { headline, description, buttonText } = Astro.props;
+---
+
+<section class="relative py-16 md:py-24 bg-gradient-to-br from-isap-navy-dark via-isap-navy to-isap-navy-light text-white overflow-hidden" aria-labelledby="cta-heading">
+  <!-- Background Accents -->
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(201,151,30,0.15),transparent_60%)] pointer-events-none"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-isap-gold/20 border border-isap-gold/40 text-isap-gold text-xs font-semibold uppercase tracking-wider mb-6">
+      <span class="w-2 h-2 rounded-full bg-isap-gold animate-pulse"></span>
+      <span>Join Us in Accra</span>
+    </div>
+
+    <h2 id="cta-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight leading-tight mb-6">
+      {headline}
+    </h2>
+
+    <p class="text-base sm:text-lg text-isap-steel/90 leading-relaxed mb-8 max-w-2xl mx-auto">
+      {description}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/register"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-isap-gold hover:bg-[#b88616] text-isap-navy-dark font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-150 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-isap-navy"
+      >
+        <span>{buttonText}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+
+      <a
+        href="/contact"
+        class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-md bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-base transition-colors"
+      >
+        <span>Contact Organizing Secretariat</span>
+      </a>
+    </div>
+
+    <p class="text-xs text-isap-steel/80 mt-6">
+      Wednesday, 7 October 2026 · UPSA PCU Auditorium, University of Professional Studies, Accra
+    </p>
+  </div>
+</section>

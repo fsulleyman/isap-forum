@@ -1,0 +1,77 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageBanner from '@/components/banners/PageBanner.astro';
+import SpeakerCard from '@/components/cards/SpeakerCard.astro';
+import { getPublishedSpeakers, getEventFacts } from '@/lib/sanity/client';
+
+const speakers = await getPublishedSpeakers();
+const eventFacts = await getEventFacts();
+---
+
+<Layout
+  title="Speakers & Panelists — ISAP Forum 2026"
+  description={`Distinguished academic researchers, keynote speakers, and industry panelists convening on ${eventFacts.date}.`}
+>
+  <PageBanner
+    title="Speakers & Panelists"
+    subtitle="Distinguished Information Systems Academics, Industry Architects & Regulators"
+    badge="Faculty & Panel"
+    breadcrumbs={[{ label: 'Speakers' }]}
+  />
+
+  <section class="py-16 md:py-24 bg-isap-off-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12">
+      
+      <!-- Introduction Banner -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-white border border-isap-border/70 shadow-sm space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-isap-navy/5 text-isap-navy text-xs font-semibold uppercase tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-isap-gold"></span>
+          <span>Verified Faculty</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold font-heading text-isap-navy">
+          Published Conference Speakers
+        </h2>
+        <p class="text-sm sm:text-base text-isap-gray-dark leading-relaxed">
+          Speakers displayed on this page have completed formal accreditation and publication clearance. In accordance with ISAP editorial governance, invited or in-process keynote nominations remain unlisted until final institutional ratification.
+        </p>
+      </div>
+
+      <!-- Speakers Grid (Published only) -->
+      {speakers.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {speakers.map((speaker) => (
+            <SpeakerCard speaker={speaker} />
+          ))}
+        </div>
+      ) : (
+        <div class="p-12 text-center bg-white rounded-2xl border border-isap-border max-w-xl mx-auto space-y-3">
+          <h3 class="text-lg font-bold text-isap-navy font-heading">
+            Speaker Announcements Pending
+          </h3>
+          <p class="text-sm text-isap-steel">
+            Official publishing clearance is underway. Check back for accredited faculty and dignitary announcements.
+          </p>
+        </div>
+      )}
+
+      <!-- Governance Notice -->
+      <div class="p-6 rounded-xl bg-isap-navy text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div class="space-y-1 text-center sm:text-left">
+          <h4 class="text-base font-bold font-heading text-white">
+            Interested in Speaking or Presenting Academic Research?
+          </h4>
+          <p class="text-xs text-isap-steel">
+            Submit your research abstract or panel inquiry to the academic review committee.
+          </p>
+        </div>
+        <a
+          href="/contact"
+          class="shrink-0 px-5 py-2.5 rounded bg-isap-gold text-isap-navy-dark font-bold text-xs hover:brightness-105 transition-all"
+        >
+          Contact Secretariat &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
