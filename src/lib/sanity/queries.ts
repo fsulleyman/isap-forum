@@ -1,16 +1,116 @@
 export const EVENT_QUERY = `*[_type == "event"][0]`;
 
-export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]`;
+export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0] {
+  ...,
+  bannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "bannerImageUrl": bannerImage.asset->url,
+  programmeBannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "programmeBannerImageUrl": programmeBannerImage.asset->url,
+  speakersBannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "speakersBannerImageUrl": speakersBannerImage.asset->url,
+  partnersBannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "partnersBannerImageUrl": partnersBannerImage.asset->url,
+  newsBannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "newsBannerImageUrl": newsBannerImage.asset->url,
+  resourcesBannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "resourcesBannerImageUrl": resourcesBannerImage.asset->url
+}`;
 
-export const HOME_PAGE_QUERY = `*[_type == "homePage"][0]`;
+export const HOME_PAGE_QUERY = `*[_type == "homePage"][0] {
+  ...,
+  heroImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "heroImageUrl": heroImage.asset->url
+}`;
 
-export const ABOUT_PAGE_QUERY = `*[_type == "aboutPage"][0]`;
+export const ABOUT_PAGE_QUERY = `*[_type == "aboutPage"][0] {
+  ...,
+  bannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "bannerImageUrl": bannerImage.asset->url
+}`;
 
-export const FORUM_2026_PAGE_QUERY = `*[_type == "forum2026Page"][0]`;
+export const FORUM_2026_PAGE_QUERY = `*[_type == "forum2026Page"][0] {
+  ...,
+  bannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "bannerImageUrl": bannerImage.asset->url
+}`;
 
-export const CONTACT_PAGE_QUERY = `*[_type == "contactPage"][0]`;
+export const CONTACT_PAGE_QUERY = `*[_type == "contactPage"][0] {
+  ...,
+  bannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "bannerImageUrl": bannerImage.asset->url
+}`;
 
-export const REGISTER_PAGE_QUERY = `*[_type == "registerPage"][0]`;
+export const REGISTER_PAGE_QUERY = `*[_type == "registerPage"][0] {
+  ...,
+  bannerImage {
+    ...,
+    asset-> {
+      _id,
+      url
+    }
+  },
+  "bannerImageUrl": bannerImage.asset->url
+}`;
 
 // Status-gated collection queries (Strictly enforced at the query layer)
 export const SPEAKERS_QUERY = `*[_type == "speaker" && status == "Published"] | order(name asc) {

@@ -2,9 +2,10 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import PartnerCard from '@/components/cards/PartnerCard.astro';
-import { getApprovedInstitutions, lastQuerySources } from '@/lib/sanity/client';
+import { getApprovedInstitutions, getSiteSettings, lastQuerySources } from '@/lib/sanity/client';
 
 const institutions = await getApprovedInstitutions();
+const siteSettings = await getSiteSettings();
 const isLive = lastQuerySources['approvedInstitutions'] === 'live';
 const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
 console.log(`[/partners render] Source: ${dataSource} | Found: ${institutions.length} approved institution(s) at ${new Date().toISOString()}`);
@@ -23,6 +24,7 @@ const participating = institutions.filter((i) => i.category === 'Participating')
   <PageBanner
     title="Partners & Institutions"
     subtitle="Academic Custodians, Institutional Partners & Industry Collaborators"
+    bannerImage={siteSettings.partnersBannerImage || siteSettings.bannerImage}
     badge="Ecosystem Collaboration"
     breadcrumbs={[{ label: 'Partners' }]}
   />
@@ -30,7 +32,7 @@ const participating = institutions.filter((i) => i.category === 'Participating')
   <section class="py-16 md:py-24 bg-isap-off-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-12">
       
-      <!-- Dev-only Data Source Verification Badge -->
+      {/* Dev-only verification badge */}
       {import.meta.env.DEV && (
         <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
           <div class="flex items-center gap-2">

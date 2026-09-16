@@ -11,7 +11,7 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav aria-label="Breadcrumbs" class="flex items-center space-x-2 text-xs md:text-sm text-isap-steel/80">
+<nav aria-label="Breadcrumbs" class="flex items-center space-x-2 text-xs md:text-sm text-white/80 font-medium">
   <a href="/" class="hover:text-isap-gold transition-colors flex items-center gap-1">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -22,7 +22,7 @@ const { items } = Astro.props;
   {
     items.map((item, index) => (
       <div class="flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-isap-steel/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"/>
         </svg>
         {item.href && index !== items.length - 1 ? (

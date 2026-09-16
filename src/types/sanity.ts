@@ -20,6 +20,18 @@ export interface SiteSettings {
   hostUniversity: string;
   linkedinUrl: string;
   copyrightNotice: string;
+  bannerImage?: any;
+  bannerImageUrl?: string;
+  programmeBannerImage?: any;
+  programmeBannerImageUrl?: string;
+  speakersBannerImage?: any;
+  speakersBannerImageUrl?: string;
+  partnersBannerImage?: any;
+  partnersBannerImageUrl?: string;
+  newsBannerImage?: any;
+  newsBannerImageUrl?: string;
+  resourcesBannerImage?: any;
+  resourcesBannerImageUrl?: string;
 }
 
 export interface PillarCard {
@@ -40,6 +52,8 @@ export interface HomePageContent {
   heroHeadline: string;
   heroSubtitle: string;
   heroTagline: string;
+  heroImage?: any;
+  heroImageUrl?: string;
   heroPrimaryCtaText: string;
   heroSecondaryCtaText: string;
   aboutForumHeading: string;
@@ -64,6 +78,8 @@ export interface AboutPageContent {
   _type: 'aboutPage';
   bannerTitle: string;
   bannerSubtitle: string;
+  bannerImage?: any;
+  bannerImageUrl?: string;
   introText: string;
   mission: string;
   vision: string;
@@ -77,6 +93,8 @@ export interface Forum2026PageContent {
   _type: 'forum2026Page';
   bannerTitle: string;
   bannerSubtitle: string;
+  bannerImage?: any;
+  bannerImageUrl?: string;
   aboutTheForum: string[];
   themeContext: string;
   objectivesHeading: string;
@@ -88,6 +106,8 @@ export interface ContactPageContent {
   _type: 'contactPage';
   bannerTitle: string;
   bannerSubtitle: string;
+  bannerImage?: any;
+  bannerImageUrl?: string;
   orgBlock: string;
   officialContactNotice: string;
   email: string;
@@ -100,6 +120,8 @@ export interface RegisterPageContent {
   _type: 'registerPage';
   bannerTitle: string;
   bannerSubtitle: string;
+  bannerImage?: any;
+  bannerImageUrl?: string;
   introCopy: string;
   googleFormUrl: string;
   qrCodeImage?: any;

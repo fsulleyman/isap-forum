@@ -1,5 +1,6 @@
 ---
 import Breadcrumbs from '@/components/navigation/Breadcrumbs.astro';
+import { urlFor } from '@/lib/sanity/image';
 
 interface Crumb {
   label: string;
@@ -9,6 +10,7 @@ interface Crumb {
 interface Props {
   title: string;
   subtitle?: string;
+  bannerImage?: any;
   backgroundImage?: string;
   breadcrumbs?: Crumb[];
   badge?: string;
@@ -17,62 +19,73 @@ interface Props {
 const {
   title,
   subtitle,
-  backgroundImage = '/banner-default.jpg',
+  bannerImage,
+  backgroundImage,
   breadcrumbs = [],
   badge,
 } = Astro.props;
+
+// Resolve banner image via Sanity's urlFor builder with hotspot/crop support
+const imageBuilder = bannerImage ? urlFor(bannerImage) : null;
+const resolvedImageUrl = imageBuilder
+  ? imageBuilder.width(2000).height(900).fit('crop').auto('format').url()
+  : (bannerImage?.asset?.url || bannerImage?.url || backgroundImage || '/banner-default.jpg');
 ---
 
 <section 
   class="relative w-full overflow-hidden bg-isap-navy-dark text-white border-b border-isap-border/10"
   aria-label={title}
 >
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0 z-0">
-    <img 
-      src={backgroundImage} 
-      alt="" 
-      aria-hidden="true" 
-      class="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity filter saturate-50" 
-      loading="eager"
-    />
-    <!-- Rich Navy Gradients -->
-    <div class="absolute inset-0 bg-gradient-to-r from-isap-navy-dark via-isap-navy/95 to-isap-navy-light/80"></div>
-    <div class="absolute inset-0 bg-radial-at-t from-transparent via-isap-navy-dark/40 to-isap-navy-dark/90"></div>
+  <!-- Background Image with Directional Overlay -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    {resolvedImageUrl && (
+      <img 
+        src={resolvedImageUrl} 
+        alt="" 
+        aria-hidden="true" 
+        class="w-full h-full object-cover object-center scale-100 opacity-75 transition-opacity duration-500" 
+        loading="eager"
+      />
+    )}
+    <!-- Left-to-Right Directional Gradient: Deep navy behind text on the left, translucent over photo subject on the right -->
+    <div class="absolute inset-0 bg-gradient-to-r from-isap-navy-dark/95 via-isap-navy/85 to-isap-navy-dark/40"></div>
+    
+    <!-- Top & Bottom Vignette for seamless header/content integration and contrast -->
+    <div class="absolute inset-0 bg-gradient-to-b from-isap-navy-dark/70 via-transparent to-isap-navy-dark/80"></div>
   </div>
 
-  <!-- Decorative Architectural Grid Lines -->
-  <div class="absolute inset-0 z-0 opacity-10 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+  <!-- Subtle Architectural Grid Accent -->
+  <div class="absolute inset-0 z-0 opacity-15 pointer-events-none bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:48px_48px]"></div>
 
-  <!-- Content Container -->
-  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28 min-h-[300px] md:min-h-[380px] lg:min-h-[420px] flex flex-col justify-end">
+  <!-- Content Container: Centered vertically with generous padding to prevent any top/bottom clipping -->
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 min-h-[320px] sm:min-h-[380px] md:min-h-[420px] flex flex-col justify-center">
     <div class="max-w-4xl">
       <!-- Breadcrumb Navigation -->
       {breadcrumbs.length > 0 && (
-        <div class="mb-4 md:mb-6">
+        <div class="mb-4 sm:mb-5">
           <Breadcrumbs items={breadcrumbs} />
         </div>
       )}
 
-      <!-- Optional Eyebrow / Category Badge -->
+      <!-- Category / Eyebrow Badge -->
       {badge && (
-        <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-isap-gold/15 border border-isap-gold/30 text-isap-gold text-xs font-semibold tracking-wider uppercase">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3.5 rounded-full bg-isap-gold/20 backdrop-blur-sm border border-isap-gold/40 text-isap-gold text-xs font-semibold tracking-wider uppercase shadow-sm">
           <span class="w-1.5 h-1.5 rounded-full bg-isap-gold animate-pulse"></span>
           <span>{badge}</span>
         </div>
       )}
 
-      <!-- Main Banner Title -->
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold font-heading text-white tracking-tight leading-tight">
+      <!-- Main Banner Title (H1) - High Contrast & Drop Shadow -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold font-heading text-white tracking-tight leading-tight drop-shadow-md">
         {title}
       </h1>
 
       <!-- Gold Accent Rule -->
-      <div class="w-20 h-1.5 bg-isap-gold mt-4 mb-4 rounded-full"></div>
+      <div class="w-20 h-1.5 bg-isap-gold mt-4 mb-4 rounded-full shadow-sm"></div>
 
-      <!-- Subtitle -->
+      <!-- Subtitle: High-contrast Slate-100 to exceed WCAG AA/AAA (>14:1 contrast ratio) -->
       {subtitle && (
-        <p class="text-base sm:text-lg md:text-xl text-isap-steel/90 font-normal leading-relaxed max-w-3xl">
+        <p class="text-base sm:text-lg md:text-xl text-slate-100 font-normal leading-relaxed max-w-3xl drop-shadow-sm">
           {subtitle}
         </p>
       )}

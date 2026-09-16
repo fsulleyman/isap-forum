@@ -26,6 +26,13 @@ export default defineType({
       initialValue: 'Bridging theory, practice and national digital identity transformation across Ghana and Africa.',
     }),
     defineField({
+      name: 'heroImage',
+      title: 'Hero Background Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Photograph for the homepage hero section. A local text scrim will be applied behind the copy.',
+    }),
+    defineField({
       name: 'heroPrimaryCtaText',
       title: 'Hero Primary CTA Text',
       type: 'string',

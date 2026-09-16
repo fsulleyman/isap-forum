@@ -1,6 +1,7 @@
 ---
 import { CountdownTimer } from '@/components/sections/CountdownTimer';
 import type { HomePageContent, EventFacts } from '@/types/sanity';
+import { urlFor } from '@/lib/sanity/image';
 
 interface Props {
   content: HomePageContent;
@@ -8,21 +9,28 @@ interface Props {
 }
 
 const { content, facts } = Astro.props;
+
+// Resolve hero background image via Sanity urlFor builder with hotspot/crop support
+const imageBuilder = content.heroImage ? urlFor(content.heroImage) : null;
+const resolvedHeroUrl = imageBuilder
+  ? imageBuilder.width(2000).height(1000).fit('crop').auto('format').url()
+  : (content.heroImage?.asset?.url || content.heroImageUrl || '/hero-bg.jpg');
 ---
 
 <section class="relative w-full overflow-hidden bg-isap-navy-dark text-white border-b border-white/10" aria-labelledby="hero-title">
-  <!-- Background Image with Deep Navy Overlays -->
-  <div class="absolute inset-0 z-0 pointer-events-none">
+  <!-- Background Image with Localized Text Scrim (Zero tint on right/center photo subject) -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
     <img
-      src="/hero-bg.jpg"
+      src={resolvedHeroUrl}
       alt=""
       aria-hidden="true"
-      class="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity filter saturate-50 scale-105 transform motion-safe:transition-transform motion-safe:duration-1000"
+      class="w-full h-full object-cover object-center opacity-100 scale-100 transition-opacity duration-700"
       loading="eager"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-isap-navy-dark via-isap-navy/95 to-isap-navy/80"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-isap-navy-dark via-transparent to-isap-navy-dark/60"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800e_1px,transparent_1px),linear-gradient(to_bottom,#8080800e_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+    <!-- Localized scrim: Confined to text column on the left; transitions to completely transparent across center & right -->
+    <div class="absolute inset-0 bg-gradient-to-r from-isap-navy-dark/95 via-isap-navy-dark/75 via-45% to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-isap-navy-dark/80 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800e_1px,transparent_1px),linear-gradient(to_bottom,#8080800e_1px,transparent_1px)] bg-[size:48px_48px] opacity-10"></div>
   </div>
 
   <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-28">
@@ -32,25 +40,25 @@ const { content, facts } = Astro.props;
       <div class="lg:col-span-7 xl:col-span-8 space-y-6">
         
         <!-- Eyebrow Pill -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-isap-gold/15 border border-isap-gold/40 text-isap-gold text-xs sm:text-sm font-semibold tracking-wider uppercase">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-isap-gold/20 backdrop-blur-sm border border-isap-gold/40 text-isap-gold text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-sm">
           <span class="w-2 h-2 rounded-full bg-isap-gold animate-pulse"></span>
           <span>{content.heroSubtitle}</span>
         </div>
 
         <!-- H1 Headline -->
-        <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-white tracking-tight leading-[1.1]">
+        <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-white tracking-tight leading-[1.1] drop-shadow-md">
           {content.heroHeadline}
         </h1>
 
         <!-- Theme Statement -->
         <div class="border-l-4 border-isap-gold pl-4 py-1">
-          <p class="text-lg sm:text-xl md:text-2xl text-white font-medium leading-snug">
+          <p class="text-lg sm:text-xl md:text-2xl text-white font-medium leading-snug drop-shadow-sm">
             "{facts.theme}"
           </p>
         </div>
 
-        <!-- Tagline -->
-        <p class="text-base sm:text-lg text-isap-steel leading-relaxed max-w-2xl">
+        <!-- Tagline: High-contrast Slate-100 for WCAG AA compliance -->
+        <p class="text-base sm:text-lg text-slate-100 font-normal leading-relaxed max-w-2xl drop-shadow-sm">
           Connecting Information Systems researchers, industry leaders, public sector authorities, and tech innovators to bridge theory, practice, and national policy across Ghana and Africa.
         </p>
 

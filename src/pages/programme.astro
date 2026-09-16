@@ -2,10 +2,11 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import ProgrammeCard from '@/components/cards/ProgrammeCard.astro';
-import { getProgrammeSessions, getEventFacts, lastQuerySources } from '@/lib/sanity/client';
+import { getProgrammeSessions, getEventFacts, getSiteSettings, lastQuerySources } from '@/lib/sanity/client';
 
 const sessions = await getProgrammeSessions();
 const eventFacts = await getEventFacts();
+const siteSettings = await getSiteSettings();
 const isLive = lastQuerySources['programmeSessions'] === 'live';
 const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
 console.log(`[/programme render] Source: ${dataSource} | Found: ${sessions.length} programme session(s) at ${new Date().toISOString()}`);
@@ -18,6 +19,7 @@ console.log(`[/programme render] Source: ${dataSource} | Found: ${sessions.lengt
   <PageBanner
     title="Conference Programme"
     subtitle={`Comprehensive Schedule of Proceedings · ${eventFacts.date}`}
+    bannerImage={siteSettings.programmeBannerImage || siteSettings.bannerImage}
     badge="Conference Agenda"
     breadcrumbs={[{ label: 'Programme' }]}
   />
@@ -25,7 +27,7 @@ console.log(`[/programme render] Source: ${dataSource} | Found: ${sessions.lengt
   <section class="py-16 md:py-24 bg-isap-off-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-8">
       
-      <!-- Dev-only Data Source Verification Badge -->
+      {/* Dev-only verification badge */}
       {import.meta.env.DEV && (
         <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
           <div class="flex items-center gap-2">

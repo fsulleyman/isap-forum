@@ -64,6 +64,48 @@ export default defineType({
       initialValue: '© 2026 University of Professional Studies, Accra (UPSA). All rights reserved.',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'bannerImage',
+      title: 'Default Banner Background Image (Global Fallback)',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Global fallback banner image used across all internal pages if no specific banner is provided.',
+    }),
+    defineField({
+      name: 'programmeBannerImage',
+      title: 'Programme Page Banner Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Banner background photograph for /programme.',
+    }),
+    defineField({
+      name: 'speakersBannerImage',
+      title: 'Speakers Page Banner Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Banner background photograph for /speakers.',
+    }),
+    defineField({
+      name: 'partnersBannerImage',
+      title: 'Partners Page Banner Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Banner background photograph for /partners.',
+    }),
+    defineField({
+      name: 'newsBannerImage',
+      title: 'News Page Banner Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Banner background photograph for /news.',
+    }),
+    defineField({
+      name: 'resourcesBannerImage',
+      title: 'Resources Page Banner Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Banner background photograph for /resources.',
+    }),
   ],
   preview: {
     prepare() {

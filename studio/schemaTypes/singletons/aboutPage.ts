@@ -20,6 +20,13 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'bannerImage',
+      title: 'Banner Background Image',
+      type: 'image',
+      options: { hotspot: true },
+      description: 'Header banner background photograph. Navy overlay will be applied automatically for text legibility.',
+    }),
+    defineField({
       name: 'introText',
       title: 'Introduction Overview',
       type: 'text',

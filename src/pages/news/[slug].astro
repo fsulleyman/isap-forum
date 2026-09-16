@@ -41,6 +41,7 @@ const articleSlug = typeof article.slug === 'string' ? article.slug : article.sl
   <PageBanner
     title={article.title}
     subtitle={`Published on ${article.publicationDate} · By ${article.author}`}
+    bannerImage={article.featuredImage}
     badge="Official Press Release"
     breadcrumbs={[
       { label: 'News & Updates', href: '/news' },

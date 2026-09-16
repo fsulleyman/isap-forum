@@ -2,10 +2,11 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import SpeakerCard from '@/components/cards/SpeakerCard.astro';
-import { getPublishedSpeakers, getEventFacts, lastQuerySources } from '@/lib/sanity/client';
+import { getPublishedSpeakers, getEventFacts, getSiteSettings, lastQuerySources } from '@/lib/sanity/client';
 
 const speakers = await getPublishedSpeakers();
 const eventFacts = await getEventFacts();
+const siteSettings = await getSiteSettings();
 const isLive = lastQuerySources['publishedSpeakers'] === 'live';
 const dataSource = isLive ? 'Live Sanity Content Lake' : 'Fallback Fixtures';
 console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length} published speaker(s) at ${new Date().toISOString()}`);
@@ -18,6 +19,7 @@ console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length
   <PageBanner
     title="Speakers & Panelists"
     subtitle="Distinguished Information Systems Academics, Industry Architects & Regulators"
+    bannerImage={siteSettings.speakersBannerImage || siteSettings.bannerImage}
     badge="Faculty & Panel"
     breadcrumbs={[{ label: 'Speakers' }]}
   />
@@ -25,7 +27,7 @@ console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length
   <section class="py-16 md:py-24 bg-isap-off-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl space-y-8">
       
-      <!-- Dev-only Data Source Verification Badge -->
+      {/* Dev-only verification badge */}
       {import.meta.env.DEV && (
         <div class={`p-3 border rounded-lg flex flex-wrap items-center justify-between gap-2 text-xs font-mono shadow-sm ${isLive ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-300 text-amber-900'}`} data-testid="data-source-badge">
           <div class="flex items-center gap-2">
