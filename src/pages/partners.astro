@@ -1,4 +1,5 @@
 ---
+import { resolvePath } from '@/lib/paths';
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import PartnerCard from '@/components/cards/PartnerCard.astro';
@@ -146,7 +147,7 @@ const participating = institutions.filter((i) => i.category === 'Participating')
         </p>
         <div class="pt-2">
           <a
-            href="/contact"
+            href={resolvePath('/contact')}
             class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-sm shadow hover:brightness-105 transition-all"
           >
             <span>Request Partnership Prospectus</span>

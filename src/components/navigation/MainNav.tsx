@@ -1,4 +1,5 @@
 import React from 'react';
+import { resolvePath } from '@/lib/paths';
 
 interface NavItem {
   label: string;
@@ -23,18 +24,21 @@ const defaultNavItems: NavItem[] = [
 ];
 
 export const MainNav: React.FC<MainNavProps> = ({ currentPath, items = defaultNavItems }) => {
+  const homeResolved = resolvePath('/');
+
   return (
     <nav aria-label="Primary Navigation" className="hidden xl:flex items-center gap-1 lg:gap-1.5">
       {items.map((item) => {
+        const resolved = resolvePath(item.path);
         const isActive =
-          item.path === '/'
-            ? currentPath === '/'
-            : currentPath.startsWith(item.path);
+          resolved === homeResolved
+            ? currentPath === homeResolved || currentPath === `${homeResolved}/`
+            : currentPath.startsWith(resolved);
 
         return (
           <a
             key={item.path}
-            href={item.path}
+            href={resolved}
             aria-current={isActive ? 'page' : undefined}
             className={`px-3 py-2 text-[14px] lg:text-[15px] font-medium transition-colors rounded-md ${
               isActive

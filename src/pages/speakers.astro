@@ -1,4 +1,5 @@
 ---
+import { resolvePath } from '@/lib/paths';
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import SpeakerCard from '@/components/cards/SpeakerCard.astro';
@@ -81,7 +82,7 @@ console.log(`[/speakers render] Source: ${dataSource} | Found: ${speakers.length
           </p>
         </div>
         <a
-          href="/contact"
+          href={resolvePath('/contact')}
           class="shrink-0 px-5 py-2.5 rounded bg-isap-gold text-isap-navy-dark font-bold text-xs hover:brightness-105 transition-all"
         >
           Contact Secretariat &rarr;

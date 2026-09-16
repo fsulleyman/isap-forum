@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import { getRegisterPage, getEventFacts } from '@/lib/sanity/client';
+import { resolvePath } from '@/lib/paths';
 
 const registerPage = await getRegisterPage();
 const eventFacts = await getEventFacts();
@@ -69,7 +70,7 @@ const eventFacts = await getEventFacts();
           <div class="flex flex-col items-center text-center space-y-3 shrink-0">
             <div class="p-3 bg-white border-2 border-isap-navy rounded-2xl shadow-md">
               <img
-                src={registerPage.qrCodeImage?.asset?.url || (typeof registerPage.qrCodeImage === 'string' ? registerPage.qrCodeImage : '/isap-qr.jpg')}
+                src={registerPage.qrCodeImage?.asset?.url || (typeof registerPage.qrCodeImage === 'string' ? registerPage.qrCodeImage : resolvePath('/isap-qr.jpg'))}
                 alt={registerPage.qrCodeAlt || "ISAP Forum 2026 Registration QR Code"}
                 class="w-48 h-48 sm:w-56 sm:h-56 object-contain"
                 width="224"

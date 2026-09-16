@@ -1,5 +1,6 @@
 ---
 import { getSiteSettings, getEventFacts } from '@/lib/sanity/client';
+import { resolvePath } from '@/lib/paths';
 
 const siteSettings = await getSiteSettings();
 const eventFacts = await getEventFacts();
@@ -17,7 +18,7 @@ const eventFacts = await getEventFacts();
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-lg bg-white p-1 shrink-0 shadow-sm border border-isap-gold/40">
             <img 
-              src="/isap-logo.jpg" 
+              src={resolvePath('/isap-logo.jpg')} 
               alt="ISAP Forum Logo" 
               class="w-full h-full object-contain"
               width="48"
@@ -53,15 +54,15 @@ const eventFacts = await getEventFacts();
           Forum Navigation
         </h3>
         <ul class="grid grid-cols-2 gap-2 text-sm">
-          <li><a href="/about" class="text-isap-steel/90 hover:text-isap-gold transition-colors">About ISAP</a></li>
-          <li><a href="/forum-2026" class="text-isap-steel/90 hover:text-isap-gold transition-colors">ISAP Forum 2026</a></li>
-          <li><a href="/programme" class="text-isap-steel/90 hover:text-isap-gold transition-colors">Programme</a></li>
-          <li><a href="/speakers" class="text-isap-steel/90 hover:text-isap-gold transition-colors">Speakers & Panel</a></li>
-          <li><a href="/partners" class="text-isap-steel/90 hover:text-isap-gold transition-colors">Partners</a></li>
-          <li><a href="/news" class="text-isap-steel/90 hover:text-isap-gold transition-colors">News & Updates</a></li>
-          <li><a href="/resources" class="text-isap-steel/90 hover:text-isap-gold transition-colors">Resources</a></li>
-          <li><a href="/register" class="text-isap-gold font-medium hover:underline">Register (Oct 7)</a></li>
-          <li><a href="/contact" class="text-isap-steel/90 hover:text-isap-gold transition-colors">Contact</a></li>
+          <li><a href={resolvePath('/about')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">About ISAP</a></li>
+          <li><a href={resolvePath('/forum-2026')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">ISAP Forum 2026</a></li>
+          <li><a href={resolvePath('/programme')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">Programme</a></li>
+          <li><a href={resolvePath('/speakers')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">Speakers & Panel</a></li>
+          <li><a href={resolvePath('/partners')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">Partners</a></li>
+          <li><a href={resolvePath('/news')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">News & Updates</a></li>
+          <li><a href={resolvePath('/resources')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">Resources</a></li>
+          <li><a href={resolvePath('/register')} class="text-isap-gold font-medium hover:underline">Register (Oct 7)</a></li>
+          <li><a href={resolvePath('/contact')} class="text-isap-steel/90 hover:text-isap-gold transition-colors">Contact</a></li>
         </ul>
 
         <!-- Event Quick Fact Badge -->
@@ -99,7 +100,7 @@ const eventFacts = await getEventFacts();
         </a>
 
         <div class="pt-2">
-          <a href="/register" class="block text-center py-2 px-3 rounded bg-isap-gold text-isap-navy-dark font-bold text-xs hover:brightness-105 transition-all">
+          <a href={resolvePath('/register')} class="block text-center py-2 px-3 rounded bg-isap-gold text-isap-navy-dark font-bold text-xs hover:brightness-105 transition-all">
             Online Registration Portal &rarr;
           </a>
         </div>
@@ -112,7 +113,7 @@ const eventFacts = await getEventFacts();
       <div class="flex items-center gap-4">
         <span class="hover:text-isap-steel transition-colors">Accra, Ghana</span>
         <span>•</span>
-        <a href="/contact" class="hover:text-isap-gold transition-colors">Organizing Secretariat</a>
+        <a href={resolvePath('/contact')} class="hover:text-isap-gold transition-colors">Organizing Secretariat</a>
       </div>
     </div>
   </div>

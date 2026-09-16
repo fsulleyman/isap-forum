@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import { getPublishedNews, getPublishedNewsBySlug } from '@/lib/sanity/client';
 import type { NewsArticle } from '@/types/sanity';
+import { resolvePath } from '@/lib/paths';
 
 export async function getStaticPaths() {
   const articles = await getPublishedNews();
@@ -26,7 +27,7 @@ const { slug } = Astro.params;
 const article = staticArticle || (slug ? await getPublishedNewsBySlug(slug) : null);
 
 if (!article) {
-  return Astro.redirect('/news');
+  return Astro.redirect(resolvePath('/news'));
 }
 
 const articleSlug = typeof article.slug === 'string' ? article.slug : article.slug.current;
@@ -36,7 +37,7 @@ const articleSlug = typeof article.slug === 'string' ? article.slug : article.sl
   title={`${article.title} — ISAP Forum News`}
   description={article.summary}
   ogType="article"
-  ogImage={article.imageUrl || '/isap-logo.jpg'}
+  ogImage={article.imageUrl || resolvePath('/isap-logo.jpg')}
 >
   <PageBanner
     title={article.title}
@@ -102,7 +103,7 @@ const articleSlug = typeof article.slug === 'string' ? article.slug : article.sl
       <!-- Article Action Footer -->
       <div class="pt-8 border-t border-isap-border/60 flex flex-col sm:flex-row items-center justify-between gap-4">
         <a
-          href="/news"
+          href={resolvePath('/news')}
           class="inline-flex items-center gap-2 text-sm font-semibold text-isap-navy hover:text-isap-gold transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -110,7 +111,7 @@ const articleSlug = typeof article.slug === 'string' ? article.slug : article.sl
         </a>
 
         <a
-          href="/register"
+          href={resolvePath('/register')}
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-xs shadow hover:brightness-105 transition-all"
         >
           <span>Register for ISAP 2026</span>

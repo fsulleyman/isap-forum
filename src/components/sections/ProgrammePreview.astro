@@ -1,6 +1,7 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import type { ProgrammeSession } from '@/types/sanity';
+import { resolvePath } from '@/lib/paths';
 
 interface Props {
   sessions: ProgrammeSession[];
@@ -22,7 +23,7 @@ const previewSessions = sessions.slice(0, 5);
       />
       <div class="shrink-0 mb-10 md:mb-14">
         <a
-          href="/programme"
+          href={resolvePath('/programme')}
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-navy hover:bg-isap-navy-light text-white font-semibold text-sm transition-colors"
         >
           <span>View Complete Programme</span>

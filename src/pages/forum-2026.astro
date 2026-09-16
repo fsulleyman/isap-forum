@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import SectionHeading from '@/components/sections/SectionHeading.astro';
 import { getForum2026Page, getEventFacts } from '@/lib/sanity/client';
+import { resolvePath } from '@/lib/paths';
 
 const forum2026 = await getForum2026Page();
 const eventFacts = await getEventFacts();
@@ -121,7 +122,7 @@ const eventFacts = await getEventFacts();
 
         <div class="pt-4 text-center">
           <a
-            href="/register"
+            href={resolvePath('/register')}
             class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-md bg-isap-gold hover:bg-[#b88616] text-isap-navy-dark font-bold text-base shadow-lg transition-all"
           >
             <span>Proceed to Registration Portal</span>

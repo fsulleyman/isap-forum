@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { resolvePath } from '@/lib/paths';
 
 interface NavItem {
   label: string;
@@ -25,6 +26,7 @@ const defaultNavItems: NavItem[] = [
 
 export const MobileNav: React.FC<MobileNavProps> = ({ currentPath, items = defaultNavItems }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const homeResolved = resolvePath('/');
 
   useEffect(() => {
     if (isOpen) {
@@ -62,15 +64,16 @@ export const MobileNav: React.FC<MobileNavProps> = ({ currentPath, items = defau
         <div className="fixed inset-0 top-[73px] z-50 bg-isap-navy-dark/95 backdrop-blur-md border-t border-white/10 flex flex-col justify-between p-6 animate-in fade-in slide-in-from-top-2 duration-200">
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-1 overflow-y-auto">
             {items.map((item) => {
+              const resolved = resolvePath(item.path);
               const isActive =
-                item.path === '/'
-                  ? currentPath === '/'
-                  : currentPath.startsWith(item.path);
+                resolved === homeResolved
+                  ? currentPath === homeResolved || currentPath === `${homeResolved}/`
+                  : currentPath.startsWith(resolved);
 
               return (
                 <a
                   key={item.path}
-                  href={item.path}
+                  href={resolved}
                   onClick={() => setIsOpen(false)}
                   aria-current={isActive ? 'page' : undefined}
                   className={`flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium transition-colors ${
@@ -88,7 +91,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ currentPath, items = defau
 
           <div className="pt-6 border-t border-white/10 mt-auto">
             <a
-              href="/register"
+              href={resolvePath('/register')}
               onClick={() => setIsOpen(false)}
               className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-md bg-isap-gold hover:bg-isap-gold/90 text-isap-navy-dark font-bold text-base shadow-lg transition-transform active:scale-[0.99]"
             >

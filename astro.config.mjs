@@ -6,7 +6,8 @@ import sanity from '@sanity/astro';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://isap-forum.netlify.app',
+  site: 'https://fsulleyman.github.io',
+  base: '/isap-forum',
   integrations: [
     react(),
     tailwind({

@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import SectionHeading from '@/components/sections/SectionHeading.astro';
 import { getAboutPage, getEventFacts } from '@/lib/sanity/client';
+import { resolvePath } from '@/lib/paths';
 
 const aboutPage = await getAboutPage();
 const eventFacts = await getEventFacts();
@@ -99,7 +100,7 @@ const eventFacts = await getEventFacts();
       <div class="p-8 sm:p-10 rounded-2xl bg-isap-navy text-white border border-white/10 shadow-lg flex flex-col sm:flex-row items-center gap-8">
         <div class="w-20 h-20 rounded-xl bg-white p-2 shrink-0 shadow-md">
           <img
-            src="/isap-logo.jpg"
+            src={resolvePath("/isap-logo.jpg")}
             alt="ISAP Forum Logo"
             class="w-full h-full object-contain"
           />

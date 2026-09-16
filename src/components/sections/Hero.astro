@@ -2,6 +2,7 @@
 import { CountdownTimer } from '@/components/sections/CountdownTimer';
 import type { HomePageContent, EventFacts } from '@/types/sanity';
 import { urlFor } from '@/lib/sanity/image';
+import { resolvePath } from '@/lib/paths';
 
 interface Props {
   content: HomePageContent;
@@ -14,7 +15,7 @@ const { content, facts } = Astro.props;
 const imageBuilder = content.heroImage ? urlFor(content.heroImage) : null;
 const resolvedHeroUrl = imageBuilder
   ? imageBuilder.width(2000).height(1000).fit('crop').auto('format').url()
-  : (content.heroImage?.asset?.url || content.heroImageUrl || '/hero-bg.jpg');
+  : (content.heroImage?.asset?.url || content.heroImageUrl || resolvePath('/hero-bg.jpg'));
 ---
 
 <section class="relative w-full overflow-hidden bg-isap-navy-dark text-white border-b border-white/10" aria-labelledby="hero-title">
@@ -65,7 +66,7 @@ const resolvedHeroUrl = imageBuilder
         <!-- CTA Action Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
-            href="/register"
+            href={resolvePath('/register')}
             class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-isap-gold hover:bg-[#b88616] text-isap-navy-dark font-bold text-base shadow-lg hover:shadow-xl transition-all duration-150 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-isap-navy"
           >
             <span>{content.heroPrimaryCtaText}</span>
@@ -73,7 +74,7 @@ const resolvedHeroUrl = imageBuilder
           </a>
 
           <a
-            href="/programme"
+            href={resolvePath('/programme')}
             class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-base transition-colors focus:outline-none focus:ring-2 focus:ring-white"
           >
             <span>{content.heroSecondaryCtaText}</span>
@@ -130,7 +131,7 @@ const resolvedHeroUrl = imageBuilder
           <!-- Register Quick Action -->
           <div class="pt-2">
             <a
-              href="/register"
+              href={resolvePath('/register')}
               class="block w-full py-3 px-4 rounded-lg bg-isap-gold text-isap-navy-dark text-center font-bold text-sm hover:brightness-105 transition-all shadow"
             >
               Secure Your Attendance &rarr;

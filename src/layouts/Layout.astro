@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import '@/styles/global.css';
 import { getEventFacts } from '@/lib/sanity/client';
+import { resolvePath } from '@/lib/paths';
 
 interface Props {
   title?: string;
@@ -15,7 +16,7 @@ interface Props {
 const {
   title = "ISAP Forum 2026 — Information Systems Academics and Practitioners' Forum",
   description = "ISAP Forum 2026 connects Information Systems academics, researchers, students, industry practitioners, and policy stakeholders in Ghana to bridge theory, practice, and national policy.",
-  ogImage = "/isap-logo.jpg",
+  ogImage = resolvePath("/isap-logo.jpg"),
   ogType = "website",
   canonicalUrl = Astro.url.href,
 } = Astro.props;
@@ -55,7 +56,7 @@ const eventStructuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpeg" href="/isap-logo.jpg" />
+    <link rel="icon" type="image/jpeg" href={resolvePath("/isap-logo.jpg")} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical URL -->

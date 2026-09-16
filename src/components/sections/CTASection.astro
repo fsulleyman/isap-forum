@@ -1,4 +1,6 @@
 ---
+import { resolvePath } from '@/lib/paths';
+
 interface Props {
   headline: string;
   description: string;
@@ -29,7 +31,7 @@ const { headline, description, buttonText } = Astro.props;
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href="/register"
+        href={resolvePath('/register')}
         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-isap-gold hover:bg-[#b88616] text-isap-navy-dark font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-150 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-isap-navy"
       >
         <span>{buttonText}</span>
@@ -37,7 +39,7 @@ const { headline, description, buttonText } = Astro.props;
       </a>
 
       <a
-        href="/contact"
+        href={resolvePath('/contact')}
         class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-md bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-base transition-colors"
       >
         <span>Contact Organizing Secretariat</span>

@@ -1,4 +1,5 @@
 ---
+import { resolvePath } from '@/lib/paths';
 import Layout from '@/layouts/Layout.astro';
 import PageBanner from '@/components/banners/PageBanner.astro';
 import ProgrammeCard from '@/components/cards/ProgrammeCard.astro';
@@ -54,7 +55,7 @@ console.log(`[/programme render] Source: ${dataSource} | Found: ${sessions.lengt
 
         <div class="shrink-0">
           <a
-            href="/register"
+            href={resolvePath('/register')}
             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-gold text-isap-navy-dark font-bold text-sm shadow hover:brightness-105 transition-all"
           >
             <span>Register for Free</span>

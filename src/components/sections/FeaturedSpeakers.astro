@@ -2,6 +2,7 @@
 import SectionHeading from './SectionHeading.astro';
 import SpeakerCard from '@/components/cards/SpeakerCard.astro';
 import type { Speaker } from '@/types/sanity';
+import { resolvePath } from '@/lib/paths';
 
 interface Props {
   speakers: Speaker[];
@@ -23,7 +24,7 @@ const publishedSpeakers = speakers.filter((s) => s.status === 'Published');
       />
       <div class="shrink-0 mb-10 md:mb-14">
         <a
-          href="/speakers"
+          href={resolvePath('/speakers')}
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-navy hover:bg-isap-navy-light text-white font-semibold text-sm transition-colors"
         >
           <span>All Speakers & Bios</span>

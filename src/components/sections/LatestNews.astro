@@ -2,6 +2,7 @@
 import SectionHeading from './SectionHeading.astro';
 import NewsCard from '@/components/cards/NewsCard.astro';
 import type { NewsArticle } from '@/types/sanity';
+import { resolvePath } from '@/lib/paths';
 
 interface Props {
   articles: NewsArticle[];
@@ -23,7 +24,7 @@ const publishedArticles = articles.filter((a) => a.status === 'Published');
       />
       <div class="shrink-0 mb-10 md:mb-14">
         <a
-          href="/news"
+          href={resolvePath('/news')}
           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-isap-navy hover:bg-isap-navy-light text-white font-semibold text-sm transition-colors"
         >
           <span>View All Announcements</span>

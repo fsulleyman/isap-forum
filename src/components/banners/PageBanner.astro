@@ -1,6 +1,7 @@
 ---
 import Breadcrumbs from '@/components/navigation/Breadcrumbs.astro';
 import { urlFor } from '@/lib/sanity/image';
+import { resolvePath } from '@/lib/paths';
 
 interface Crumb {
   label: string;
@@ -29,7 +30,7 @@ const {
 const imageBuilder = bannerImage ? urlFor(bannerImage) : null;
 const resolvedImageUrl = imageBuilder
   ? imageBuilder.width(2000).height(900).fit('crop').auto('format').url()
-  : (bannerImage?.asset?.url || bannerImage?.url || backgroundImage || '/banner-default.jpg');
+  : (bannerImage?.asset?.url || bannerImage?.url || backgroundImage || resolvePath('/banner-default.jpg'));
 ---
 
 <section 
